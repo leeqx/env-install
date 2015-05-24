@@ -90,9 +90,9 @@ mkdir -p /home/$suer/.vim/bundle/tmux-powerline/
 cp ./powerline*.zsh /home/$suer/.vim/bundle/tmux-powerline/
 cp ./.ycm_extra_conf.py /home/$user/
 cp ./agnoster-new.zsh-theme /home/$user/.oh-my-zsh/themes/agnoster-new.zsh-theme
-#echo 'ZSH_THEME="agnoster-new"' >> ~/.zshrc
-#echo 'source /home/$user/.oh-my-zsh/oh-my-zsh.sh' >> ~/.zshrc
-#echo 'source /home/$user/.vim/bundle/tmux-powerline/opwerline.zsh' >> ~/.zshrc
+#echo 'ZSH_THEME="agnoster-new"' >> /home/$user.zshrc
+#echo 'source /home/$user/.oh-my-zsh/oh-my-zsh.sh' >> /home/$user.zshrc
+#echo 'source /home/$user/.vim/bundle/tmux-powerline/opwerline.zsh' >> /home/$user.zshrc
 
 echo "Please open vim and run :PluginInstall "
 
@@ -100,63 +100,45 @@ echo "Please open vim and run :PluginInstall "
 ######################################################
 # Install vim plugins
 ######################################################
-if [ ! -e ~/.vim/autoload/ ];then
-	echo "mkdir ~/.vimautoload"
-	mkdir -p ~/.vim/autoload
+if [ ! -e /home/$user.vim/autoload/ ];then
+	echo "mkdir /home/$user.vimautoload"
+	mkdir -p /home/$user.vim/autoload
 fi
-if [ ! -e ~/.vim/bundle/ ];then
-	echo "mkdir ~/.vim/bundle"
-	mkdir -p ~/.vim/bundle
+if [ ! -e /home/$user.vim/bundle/ ];then
+	echo "mkdir /home/$user.vim/bundle"
+	mkdir -p /home/$user.vim/bundle
 fi
 
 #install pathogen
 #git clone git@github.com:tpope/vim-pathogen.git 
 echo " install pathogen"
-curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+curl -LSso /home/$user.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 
-isExist=`cat ~/.vimrc|grep pathogen#infect`
+isExist=`cat /home/$user.vimrc|grep pathogen#infect`
 if [ -z $isExist ];then
-	echo "execute pathogen#infect()" >> ~/.vimrc
+	echo "execute pathogen#infect()" >> /home/$user.vimrc
 fi
-isExist=`cat ~/.vimrc|grep 'syntax on'`
+isExist=`cat /home/$user.vimrc|grep 'syntax on'`
 if [ -z $isExist ];then
-	echo "syntax on" >> ~/.vimrc
+	echo "syntax on" >> /home/$user.vimrc
 fi
-isExist=`cat ~/.vimrc|grep 'filetype plugin'`
+isExist=`cat /home/$user.vimrc|grep 'filetype plugin'`
 if [ -z $isExist ];then
-	echo "filetype plugin indent on" >> ~/.vimrc
+	echo "filetype plugin indent on" >> /home/$user.vimrc
 fi
 
 #install sensible
 
-cd ~/.vim/bundle/
+cd /home/$user.vim/bundle/
 echo "install sensible"
 git clone git://github.com/tpope/vim-sensible.git
 #install nerdtree
 echo "install nerdtree"
 git clone git://github.com/scrooloose/nerdtree.git
 
-#install taglist
-#echo "install taglist"
-#wget http://vim.sourceforge.net/scripts/download_script.php?src_id=7701
-#unzip taglist_45.zip
-#mv taglist_45 taglist
-
-#first time to update taglist
-if [ $1 -eq 0 ];then
-	#在vim中运行Helptags 查看帮助
-	echo "let Tlist_Use_Right_Window = 1
-	let Tlist_Exit_OnlyWindow = 1
-	let Tlist_Show_One_File = 1
-	let Tlist_Sort_Type = 'name'
-	let Tlist_Compact_Format = 1
-	let g:tlist_php_settings = 'php;c:class;f:function'
-	map <D-7> :TlistToggle <CR>" >> ~/.vimrc
-fi
-
 echo "install srcExpl.git"
 git clone https://github.com/wesleyche/SrcExpl.git
 
-cd ~/.vim/bundle/YouCompleteMe/
+cd /home/$user.vim/bundle/YouCompleteMe/
 ./install.sh --clang-completer
     
