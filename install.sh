@@ -43,7 +43,7 @@ chown $user:$user /home/$user/.tmux.conf
 echo "install vim"
 apt-get install vim
 
-clone git@github.com:leeqx/vimconf.git 
+git clone git@github.com:leeqx/vimconf.git 
 echo "cp /home/$user/.vimrc /home/$user/.vimrc.bak.$$"
 mv /home/$user/.vimrc /home/$user/.vimrc.bak.$$
 mv /home/$user/.vim /home/$user/.vim.bak.$$
@@ -53,6 +53,12 @@ cp vimconf/.vimrc /home/$user
 cp -R vimconf/.vim /home/$user
 chown $user:$user /home/$user/.vim -R
 chown $user:$user /home/$user/.vimrc
+
+#config powerline for zsh
+mkdir -p /home/$suer/.vim/bundle/tmux-powerline/
+cp ./powerline*.zsh /home/$suer/.vim/bundle/tmux-powerline/
+echo 'ZSH_THEME="powerline"' >> ~/.zshrc
+
 
 echo "Please open vim and run :PluginInstall "
 
