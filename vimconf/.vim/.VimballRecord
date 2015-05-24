@@ -1,1 +1,0 @@
-winmanager.vmb: call delete('/Users/jiadongzhuang/.vim/doc/winmanager.txt')|call delete('/Users/jiadongzhuang/.vim/plugin/winfileexplorer.vim')|call delete('/Users/jiadongzhuang/.vim/plugin/winmanager.vim')|call delete('/Users/jiadongzhuang/.vim/plugin/wintagexplorer.vim')

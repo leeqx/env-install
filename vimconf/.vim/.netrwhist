@@ -1,7 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/Users/jiadongzhuang/project/3rd/downloaded/protobuf/more_tests'
-let g:netrw_dirhist_2='/Users/jiadongzhuang/project/try_out/cxx/bin'
-let g:netrw_dirhist_3='/usr/local/opt/openresty'
-let g:netrw_dirhist_4='/home/liqingxin/.vim'
-let g:netrw_dirhist_5='/home/liqingxin/project/git/vip_main/server/src/common'
