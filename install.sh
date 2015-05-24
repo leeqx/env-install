@@ -57,6 +57,7 @@ chown $user:$user /home/$user/.vimrc
 #config powerline for zsh
 mkdir -p /home/$suer/.vim/bundle/tmux-powerline/
 cp ./powerline*.zsh /home/$suer/.vim/bundle/tmux-powerline/
+cp ./.ycm_extra_conf.py /home/$user/
 echo 'ZSH_THEME="powerline"' >> ~/.zshrc
 
 
