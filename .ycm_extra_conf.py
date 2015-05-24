@@ -31,7 +31,6 @@
 import os
 import ycm_core
 
-os.path.append("/usr/local/3rd/lib")
 # These are the compilation flags that will be used in case there's no
 # compilation database set (by default, one is not set).
 # CHANGE THIS LIST OF FLAGS. YES, THIS IS THE DROID YOU HAVE BEEN LOOKING FOR.
