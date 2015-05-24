@@ -55,3 +55,6 @@ fi
 echo "install srcExpl.git"
 git clone https://github.com/wesleyche/SrcExpl.git
 
+cd ~/.vim/bundle/YouCompleteMe/
+./install.sh --clang-completer
+    
