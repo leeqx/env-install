@@ -64,6 +64,9 @@ else
 	 #for YouCompleteMe compile
 	 brew install cmake
 	 brew install https://raw.github.com/Homebrew/homebrew-dupes/master/grep.rb
+	echo "Please install fonts patch for powerline"
+	sh ./fonts/install.sh
+
 fi
 
 # setup config
@@ -95,7 +98,6 @@ cp ./agnoster-new.zsh-theme /home/$user/.oh-my-zsh/themes/agnoster-new.zsh-theme
 #echo 'source /home/$user/.vim/bundle/tmux-powerline/opwerline.zsh' >> /home/$user.zshrc
 
 echo "Please open vim and run :PluginInstall "
-
 
 ######################################################
 # Install vim plugins
