@@ -36,6 +36,11 @@ if [ "$2" == "linux" ];then
 	echo "install vim"
 	apt-get install vim
 
+	apt-get install zsh
+	echo "please download oh-my-zsh from github and put then at /home/$user/"
+
+	apt-get install g++
+	apt-get install cmake
 else
 	echo "1. install git"
 
@@ -66,7 +71,6 @@ else
 	 brew install https://raw.github.com/Homebrew/homebrew-dupes/master/grep.rb
 	echo "Please install fonts patch for powerline"
 	sh ./fonts/install.sh
-
 fi
 
 # setup config
@@ -85,62 +89,20 @@ mv /home/$user/.vim /home/$user/.vim.bak.$$
 echo "cp -Rf vimconf/* /home/$user"
 cp vimconf/.vimrc /home/$user
 cp -R vimconf/.vim /home/$user
-chown $user:$user /home/$user/.vim -R
-chown $user:$user /home/$user/.vimrc
+chown $user -R /home/$user/.vim 
+chown $user /home/$user/.vimrc
 
 #config powerline for zsh
 mkdir -p /home/$suer/.vim/bundle/tmux-powerline/
+chown $user /home/$suer/.vim/bundle/tmux-powerline/
 cp ./powerline*.zsh /home/$suer/.vim/bundle/tmux-powerline/
 cp ./.ycm_extra_conf.py /home/$user/
+mkdir -p /home/$user/.oh-my-zsh/themes
+chown $user /home/$user/.oh-my-zsh/themes
 cp ./agnoster-new.zsh-theme /home/$user/.oh-my-zsh/themes/agnoster-new.zsh-theme
-#echo 'ZSH_THEME="agnoster-new"' >> /home/$user.zshrc
-#echo 'source /home/$user/.oh-my-zsh/oh-my-zsh.sh' >> /home/$user.zshrc
-#echo 'source /home/$user/.vim/bundle/tmux-powerline/opwerline.zsh' >> /home/$user.zshrc
+cp powerline_tmux_1.8.conf /home/$user/
 
-echo "Please open vim and run :PluginInstall "
-
-######################################################
-# Install vim plugins
-######################################################
-if [ ! -e /home/$user/.vim/autoload/ ];then
-	echo "mkdir /home/$user/.vim/autoload"
-	mkdir -p /home/$user/.vim/autoload
-fi
-if [ ! -e /home/$user/.vim/bundle/ ];then
-	echo "mkdir /home/$user/.vim/bundle"
-	mkdir -p /home/$user/.vim/bundle
-fi
-
-#install pathogen
-#git clone git@github.com:tpope/vim-pathogen.git 
-echo " install pathogen"
-curl -LSso /home/$user/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
-
-isExist=`cat /home/$user/.vimrc|grep pathogen#infect`
-if [ -z "$isExist" ];then
-	echo "execute pathogen#infect()" >> /home/$user/.vimrc
-fi
-isExist=`cat /home/$user/.vimrc|grep 'syntax on'`
-if [ -z "$isExist" ];then
-	echo "syntax on" >> /home/$user/.vimrc
-fi
-isExist=`cat /home/$user/.vimrc|grep 'filetype plugin'`
-if [ -z "$isExist" ];then
-	echo "filetype plugin indent on" >> /home/$user/.vimrc
-fi
-
-#install sensible
-
-cd /home/$user/.vim/bundle/
-echo "install sensible"
-git clone git://github.com/tpope/vim-sensible.git
-#install nerdtree
-echo "install nerdtree"
-git clone git://github.com/scrooloose/nerdtree.git
-
-echo "install srcExpl.git"
-git clone https://github.com/wesleyche/SrcExpl.git
-
-cd /home/$user/.vim/bundle/YouCompleteMe/
-sudo ./install.sh --clang-completer --system-libclang
+echo "Please open vim and run :PluginInstall or :PluginUpdate to install vim-plugins"
+echo "cd /home/$user/.vim/bundle/YouCompleteMe/"
+echo "sudo ./install.sh --clang-completer --system-libclang"
     
