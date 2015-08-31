@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/nano/.oh-my-zsh
+export ZSH=/home/roop/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -57,7 +57,7 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/loca
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
-source ~/.vim/bundle/tmux-powerline/powerline.zsh 
+#source ~/.vim/bundle/tmux-powerline/powerline.zsh 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
 
@@ -89,16 +89,15 @@ alias tm='tmux -2'
 alias tml='tmux -l'
 alias oi='set -o vi'
 oi
-tm
+tm 
+alias sh='/usr/bin/zsh'
 #alias g++='g++-4.9'
 #alias gcc='gcc-4.9'
 #alias cpp='cpp-4.9'
 #alias c++='c++-4.9'
 #alias ar='gcc-ar'
 #alias nm='gcc-nm'
-export PATH=${PATH}:/usr/local/3rd/bin/:/usr/local/3rd/share/:/Users/nano/bin/:/usr/local/Cellar/tmux/1.9a/bin:/usr/local/Cellar/gcc49/4.9.2/bin:/usr/local/Cellar/lua/5.2.3_1/bin/:/usr/local/Cellar/luajit/2.0.3_1/bin:/usr/local/Cellar/unrar/5.2.3/bin
 
-export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/3rd/leveldb/:/usr/local/3rd/lib/:/usr/local/Cellar/cloog018/0.18.0/lib:/usr/local/Cellar/gmp4/4.3.2/lib:/usr/local/Cellar/mpfr2/2.4.2/lib/:/usr/local/Cellar/libmpc08/0.8.1/lib/:/usr/local/Cellar/lua/5.2.3_1/lib/:/usr/local/Cellar/luajit/2.0.3_1/lib:/usr/local/Cellar/unrar/5.2.3/lib/:/usr/lib
 
 #PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
 

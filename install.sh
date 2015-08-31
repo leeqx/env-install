@@ -4,21 +4,23 @@ if [ $# -lt 2 ];then
 fi
 issupper=`id|grep root`
 if [ -z "$issupper" ];then
-	echo " must run with root "
+	echo "****must run with root "
 	exit
 fi
 user=$1
+BACKUPDIR=/home/$user/backup
+if [ ! -e $BACKUPDIR ];then
+	mkdir -p $BACKUPDIR
+fi
 
 if [ "$2" == "linux" ];then
-
 	#apt-get install git
 	echo "1. install git"
 	git=`which git`
 	if [ -z "$git" ];then
 		apt-get install git
 		if [ ! -e /home/$user/.ssh/id_rsa.pub ];then
-		 echo "****you need to run :ssh-keygen -t rsa -C \"lqx0830@hotmail.com\" "
-		 exit
+			echo "****you need to run :ssh-keygen -t rsa -C \"youremail\" "
 		fi
 	fi
 	echo "2.install expect"
@@ -33,9 +35,10 @@ if [ "$2" == "linux" ];then
 		apt-get install tmux
 	fi
 	#install newest vim
-	echo "install vim"
+	echo "4.install vim"
 	apt-get install vim
 
+	echo "5.install zsh"
 	apt-get install zsh
 	echo "please download oh-my-zsh from github and put then at /home/$user/"
 
@@ -48,7 +51,7 @@ else
 	if [ -z "$git" ];then
 		brew install git
 		if [ ! -e /home/$user/.ssh/id_rsa.pub ];then
-		 echo "****you need to run :ssh-keygen -t rsa -C \"lqx0830@hotmail.com\" "
+		 echo "****you need to run :ssh-keygen -t rsa -C \"your email\" "
 		 exit
 		fi
 	fi
@@ -71,26 +74,37 @@ else
 	 brew install https://raw.github.com/Homebrew/homebrew-dupes/master/grep.rb
 	echo "Please install fonts patch for powerline"
 	sh ./fonts/install.sh
+else
+	echo "unsupport system type,should be mac or linux"
+	exit
 fi
 
+echo "6.setup configure .tmux.conf"
 # setup config
-cp /home/$user/.tmux.conf /home/$user/.tmux.conf.bak.$$
+cp /home/$user/.tmux.conf $BACKUPDIR/.tmux.conf.bak.$$
 
 cp .tmux.conf  /home/$user
 chown $user:$user /home/$user/.tmux.conf
 
+echo "7.setup .vim .vimrc"
+#git clone git@github.com:leeqx/vimconf.git 
+if [ -e vimconf ];then
+	echo "cp /home/$user/.vimrc $BACKUPDIR/.vimrc.bak.$$"
+	mv /home/$user/.vimrc $BACKUPDIR/.vimrc.bak.$$
+	mv /home/$user/.vim $BACKUPDIR/.vim.bak.$$
 
-git clone git@github.com:leeqx/vimconf.git 
+	echo "cp -Rf vimconf/* /home/$user"
+	cp vimconf/.vimrc /home/$user
+	cp -R vimconf/.vim /home/$user
+	chown $user:$user -R /home/$user/.vim 
+	chown $user:$user /home/$user/.vimrc
+fi
+echo "8.setup zsh config"
+cp /home/$user/.zshrc $BACKUPDIR 
+cp .zshrc /home/$user
 
-echo "cp /home/$user/.vimrc /home/$user/.vimrc.bak.$$"
-mv /home/$user/.vimrc /home/$user/.vimrc.bak.$$
-mv /home/$user/.vim /home/$user/.vim.bak.$$
-
-echo "cp -Rf vimconf/* /home/$user"
-cp vimconf/.vimrc /home/$user
-cp -R vimconf/.vim /home/$user
-chown $user -R /home/$user/.vim 
-chown $user /home/$user/.vimrc
+echo "8.setup zsh as default sh"
+chsh -s /bin/zsh
 
 #config powerline for zsh
 mkdir -p /home/$suer/.vim/bundle/tmux-powerline/
@@ -102,7 +116,10 @@ chown $user /home/$user/.oh-my-zsh/themes
 cp ./agnoster-new.zsh-theme /home/$user/.oh-my-zsh/themes/agnoster-new.zsh-theme
 cp powerline_tmux_1.8.conf /home/$user/
 
+
 echo "Please open vim and run :PluginInstall or :PluginUpdate to install vim-plugins"
+echo "You should down poweline and then install  and install font-patch"
 echo "cd /home/$user/.vim/bundle/YouCompleteMe/"
 echo "sudo ./install.sh --clang-completer --system-libclang"
+echo "after all you need to reboot your system"
     
