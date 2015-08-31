@@ -45,7 +45,7 @@ let g:mapleader=","
 	"PlugPack powerline{
 		Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 		Plugin 'erikw/tmux-powerline', {'rtp': 'powerline/bindings/vim/'}
-		Plugin 'Lkaltog/vim-powerline'
+		Plugin 'Lokaltog/vim-powerline'
 		set laststatus=2
 		set showtabline=2 " Always display the tabline, even if there is only one tab
 		set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
