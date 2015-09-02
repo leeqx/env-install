@@ -83,8 +83,8 @@ export LANG=en_US.UTF-8
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
-alias ls='ls -lh'
-alias ll='ls -lh'
+alias ls='ls -lh --color=auto'
+alias ll='ls -lh --color=auto'
 alias tm='tmux -2'
 alias tml='tmux -l'
 alias oi='set -o vi'
