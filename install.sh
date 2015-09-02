@@ -116,6 +116,13 @@ chown $user /home/$user/.oh-my-zsh/themes
 cp ./agnoster-new.zsh-theme /home/$user/.oh-my-zsh/themes/agnoster-new.zsh-theme
 cp powerline_tmux_1.8.conf /home/$user/
 
+echo "configure terminal color"
+if [ $2 = "linux" ];then
+	cp dircolors-solarized/dircolors.256dark /home/$user/.dircolors
+	eval 'dircolors /home/$user/.dircolors'
+	cd gnome-terminal-colors-solarized
+	./set_dark.sh
+fi
 
 echo "Please open vim and run :PluginInstall or :PluginUpdate to install vim-plugins"
 echo "You should down poweline and then install  and install font-patch"
