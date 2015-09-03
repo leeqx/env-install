@@ -129,4 +129,7 @@ echo "You should down poweline and then install  and install font-patch"
 echo "cd /home/$user/.vim/bundle/YouCompleteMe/"
 echo "sudo ./install.sh --clang-completer --system-libclang"
 echo "after all you need to reboot your system"
+echo "if dhe git color is not correct you maybe to modify ~/.oh-my-zsh/lib/git.zsh:parse_git_dirty ,because ZSH_THEME_GIT_PROMPT_CLEAN is not empty "
+echo "and ZSH_THEME_GIT_PROMPT_CLEAN=%{^[[34m%}) which will cause the agnoster-new.zsh-theme check as dirty"
+
     
