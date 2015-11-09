@@ -1,5 +1,6 @@
 # Path to your oh-my-zsh installation.
 export ZSH=/home/roop/.oh-my-zsh
+setopt AUTO_CD
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -64,8 +65,9 @@ export LANG=en_US.UTF-8
 # Preferred editor for local and remote sessions
  if [[ -n $SSH_CONNECTION ]]; then
    export EDITOR='vim'
+   bindkey -v 
 # else
-#   export EDITOR='mvim'
+#   export EDITOR='nvim'
  fi
 
 # Compilation flags
@@ -83,8 +85,8 @@ export LANG=en_US.UTF-8
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
-alias ls='ls -lh --color=auto'
-alias ll='ls -lh --color=auto'
+alias ls='ls -lh'
+alias ll='ls -lh'
 alias tm='tmux -2'
 alias tml='tmux -l'
 alias oi='set -o vi'
