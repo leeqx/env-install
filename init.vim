@@ -50,6 +50,7 @@ Plugin 'godlygeek/tabular'
 
 "Add :myself"
 Plugin 'airblade/vim-gitgutter'
+Plugin 'jacobsimpson/nvim-terminal-velocity'
 
 
 
@@ -314,3 +315,23 @@ nmap buf :CtrlPBuffer<cr>
 "
 "================[airblade/vim-gitgutter]========================= =========================================="
 
+let g:python3_host_prog = '/usr/bin/python3.4'
+
+"===============================================================================
+"here is the help for nvim-terminal-velocity ,don't configure manual
+"   ,tj - open a new terminal window below the current window.
+"   ,tk - open a new terminal window above the current window.
+"   ,th - open a new terminal window to the left of the current window.
+"   ,tl - open a new terminal window to the right of the current window.
+"   ,t. - open a new terminal window in the current window.
+
+"========================nvim-terminal-emulator================================
+" exit term (ESC) and then ctrl-w+w  to switch term and editor
+:tnoremap <A-h> <C-\><C-n><C-w>h
+:tnoremap <A-j> <C-\><C-n><C-w>j
+:tnoremap <A-k> <C-\><C-n><C-w>k
+:tnoremap <A-l> <C-\><C-n><C-w>l
+:nnoremap <A-h> <C-w>h
+:nnoremap <A-j> <C-w>j
+:nnoremap <A-k> <C-w>k
+:nnoremap <A-l> <C-w>l
