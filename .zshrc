@@ -99,6 +99,7 @@ alias sh='/usr/bin/zsh'
 #alias c++='c++-4.9'
 #alias ar='gcc-ar'
 #alias nm='gcc-nm'
+alias vi='nvim'
 
 
 #PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'

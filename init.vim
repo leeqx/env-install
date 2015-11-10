@@ -49,8 +49,6 @@ Plugin 'godlygeek/tabular'
 
 
 "Add :myself"
-Plugin 'edkolev/promptline'
-Plugin 'kien/ctrlp'
 Plugin 'airblade/vim-gitgutter'
 
 
@@ -308,5 +306,11 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 "================[kien/ctrlp]========================= =========================================="
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_open_multiple_files = 'v'   "open multiple file vsp
+set wildignore+=*.so,*.swp,*.zip,*.o,*.bin
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+nmap mix :CtrlPMixed<cr>
+nmap buf :CtrlPBuffer<cr>
+"
 "================[airblade/vim-gitgutter]========================= =========================================="
 
