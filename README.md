@@ -22,15 +22,15 @@ Ctrl＋t＋［
 Ctrl＋t＋］粘贴刚复制的内容
 
 ## Install neovim 
-see https://github.com/neovim
-python module for neovim
-see https://github.com/neovim/neovim/issues/3396
-configure for neovim
-copy init.vim to `~/.config/nvim/`
-configure in ``~/.zshrc`
-```shell
-    alias vi='nvim -u ~/.config/nvim/init.vim'
+see https://github.com/neovim  
+python module for neovim  
+see https://github.com/neovim/neovim/issues/3396  
+configure for neovim  
+copy init.vim to `~/.config/nvim/`  
+configure in `~/.zshrc`  
+```shell  
+    alias vi='nvim -u ~/.config/nvim/init.vim'  
 ```
-copy `./vimconf/.vim` into `~/.config/nvim/`
+copy `./vimconf/.vim` into `~/.config/nvim/`  
 and then open nvim execute `:PluginInstall`   
 
