@@ -146,7 +146,7 @@ let g:cpp_class_scope_highlight = 1
 let g:cpp_experimental_template_highlight = 1
 
 "=====[ YouCompleteMe Configurations ]========================================
-" let g:ycm_min_num_of_chars_for_completion = 99
+"let g:ycm_min_num_of_chars_for_completion = 99
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
@@ -222,8 +222,8 @@ let g:indentLine_color_dark = 1 " (default: 2)
 let g:indentLine_color_term = 239
 
 " =====[ clighter ]===========================================================
-let g:clighter_compile_args = ['-isystem /usr/lib/llvm-3.6/lib/clang/3.6.0/include',
-                              \'-I/home/sporty/ws-ccs/hw_1_5/miwt-os',
+let g:clighter_compile_args = ['-isystem /usr/lib/llvm-3.5/lib/clang/3.5.0/include',
+                              \'-I/home/roop/project',
                               \'-std=c++03']
 
 
@@ -251,7 +251,7 @@ set laststatus=2
 let g:airline_powerline_fonts = 1
 set number
 syntax on
-set tags=tags;
+"set tags=tags;
 set expandtab
 
 nnoremap <F4> :wa <bar> :make!<cr>
@@ -309,7 +309,7 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_open_multiple_files = 'v'   "open multiple file vsp
 set wildignore+=*.so,*.swp,*.zip,*.o,*.bin
-set runtimepath^=~/.vim/bundle/ctrlp.vim
+set runtimepath^=~/.config/nvim/bundle/ctrlp.vim
 nmap mix :CtrlPMixed<cr>
 nmap buf :CtrlPBuffer<cr>
 "
