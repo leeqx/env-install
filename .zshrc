@@ -87,7 +87,7 @@ export LANG=en_US.UTF-8
 #
 alias ls='ls -lh'
 alias ll='ls -lh'
-alias tm='tmux -2'
+alias tm='tmux -2 -f ~/.tmux.conf'
 alias tml='tmux -l'
 alias oi='set -o vi'
 oi
@@ -100,10 +100,10 @@ alias sh='/usr/bin/zsh'
 #alias ar='gcc-ar'
 #alias nm='gcc-nm'
 
-source "/usr/bin/virtualenvwrapper.sh"
-export WORKON_HOME="/home/roop/virtual_env/"
+#source "/usr/bin/virtualenvwrapper.sh"
+#export WORKON_HOME="/home/roop/virtual_env/"
 
-alias vi='nvim'
+alias vi='nvim -u ~/.config/nvim/init.vim'
 
 
 #PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
