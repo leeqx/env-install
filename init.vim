@@ -1,9 +1,12 @@
 " Bundle Vundle configurations
+let g:python3_host_prog = '~/virtual_env/neovim/bin/python'
+
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.config/nvim/bundle/Vundle.vim
+
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
@@ -13,7 +16,6 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'Yggdroot/indentLine'
 Plugin 'fatih/vim-go'
 Plugin 'tpope/vim-fugitive'
-"Plugin 'Valloric/YouCompleteMe'
 Plugin 'oblitum/YouCompleteMe' , { 'do': './install.py --clang-completer' }
 Plugin 'scrooloose/syntastic'
 Plugin 'SirVer/ultisnips'
@@ -33,8 +35,6 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'DoxygenToolkit.vim'
 Plugin 'edkolev/tmuxline.vim'
-Plugin 'szw/vim-ctrlspace'
-"Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'oblitum/rainbow'
 Plugin 'vim-scripts/a.vim'
 Plugin 'moll/vim-bbye'
@@ -51,16 +51,17 @@ Plugin 'godlygeek/tabular'
 "Add :myself"
 Plugin 'airblade/vim-gitgutter'
 Plugin 'jacobsimpson/nvim-terminal-velocity'
-
-
-
-
-
-
+Plugin 'tacahiroy/ctrlp-funky'
+Plugin 'ctrlpvim/ctrlp.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
+
+
+
+"=============================================================================
+"=============================================================================
 
 set ttimeoutlen=50
 set synmaxcol=120
@@ -106,10 +107,10 @@ map gd :bd<cr>
 :nnoremap <Leader>q :Bdelete<CR>
 
 " =====[ Remap to change windows quickly ]====================================
-:nmap <silent> <C-H> :wincmd h<CR>
-:nmap <silent> <C-J> :wincmd j<CR>
-:nmap <silent> <C-K> :wincmd k<CR>
-:nmap <silent> <C-L> :wincmd l<CR>
+"":nmap <silent> <C-H> :wincmd h<CR>
+"":nmap <silent> <C-J> :wincmd j<CR>
+"":nmap <silent> <C-K> :wincmd k<CR>
+"":nmap <silent> <C-L> :wincmd l<CR>
 
 "=====[ Remap the Escap Key "]================================================
 :inoremap jk <Esc>
@@ -129,6 +130,8 @@ let g:syntastic_c_checkers = ['cpplint']
 let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = ' -std=c++03 -stdlib=libc++'
 let g:syntastic_shell = "/bin/sh"
+let g:syntastic_error_symbol = '✗'
+let g:syntastic_warning_symbol = '⚠'
 
 "=====[ airline configuration ]===============================================
 let g:airline#extensions#tabline#enabled = 1
@@ -157,29 +160,12 @@ let g:ycm_confirm_extra_conf = 0
 let g:ycm_auto_trigger = 50
 let g:ycm_key_detailed_diagnostics = '<leader>d'
 let g:ycm_filepath_completion_use_working_dir = 1
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 nnoremap <leader>jd :YcmCompleter GoTo<CR>
+nnoremap <leader>jc :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>je :YcmCompleter GoDefinition<CR>
 nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
-
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
-
-"=====[ ctrl-space ]==========================================================
-set hidden
-:nmap <silent> <C-H> :wincmd h<CR>
-let g:CtrlSpaceGlobCommand = 'ag -l --nocolor -g ""'
-
-let g:CtrlSpaceIgnoredFiles = '\v(tmp|temp|md5|o)[\/]'
-nnoremap <silent><C-p> :CtrlSpace O<CR>
-
-let g:CtrlSpaceLoadLastWorkspaceOnStart = 1
-let g:CtrlSpaceSaveWorkspaceOnSwitch = 1
-let g:CtrlSpaceSaveWorkspaceOnExit = 1
-set showtabline=0
-
-"=====[kien/rainbow_parentheses.vim]==========================================
-"au VimEnter * RainbowParenthesesToggle
-"au Syntax * RainbowParenthesesLoadRound
-"au Syntax * RainbowParenthesesLoadSquare
-"au Syntax * RainbowParenthesesLoadBraces
 
 "=====[oblitum/rainbow]=======================================================
 au FileType c,cpp,objc,objcpp call rainbow#load()
@@ -277,9 +263,9 @@ augroup BgHighlight
     autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
     autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 
-    autocmd BufReadPost quickfix map <buffer> <leader>qq :cclose<cr>
-                               \|map <buffer> <c-p> <up>
-                               \|map <buffer> <c-n> <down>
+    "autocmd BufReadPost quickfix map <buffer> <leader>qq :cclose<cr>
+    ""                          \|map <buffer> <c-p> <up>
+    ""                           \|map <buffer> <c-n> <down>
 
     autocmd GuiEnter * set background&
     
@@ -301,10 +287,12 @@ let g:promptline_theme = 'airline'
 " or
 "let g:promptline_theme = 'jelly'
 " other themes available in autoload/promptline/themes/*
-"===============[bling/vim-airline]========================== ===========================
+
+"===============[bling/vim-airline]========================== =================
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
-"================[kien/ctrlp]========================= =========================================="
+
+"================[kien/ctrlp]========================= ========================
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_open_multiple_files = 'v'   "open multiple file vsp
@@ -312,12 +300,22 @@ set wildignore+=*.so,*.swp,*.zip,*.o,*.bin
 set runtimepath^=~/.config/nvim/bundle/ctrlp.vim
 nmap mix :CtrlPMixed<cr>
 nmap buf :CtrlPBuffer<cr>
-"
-"================[airblade/vim-gitgutter]========================= =========================================="
+let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:20'
 
-let g:python3_host_prog = '/usr/bin/python3.4'
+"<c-f>和<c-p> 在各个模式下转换
+"<c-d> 使用文件名搜索代替全路径搜索
+"<c-r> 使用正则模式
+"<c-j>和<c-k> 上下选择文件
+"<c-t> <c-v>和<c-x> 在新的tab或者新的分割窗口打开选择的文件
+"<c-n>和<c-p> 找到之前或者之后查找的字符串
+"<c-y> 创建一个新的文件
+"<c-z> 标记或者取消标记多个文件然后使用<c-o>打开它们"
 
-"===============================================================================
+"================[airblade/vim-gitgutter]========================= ============
+let g:gitgutter_enabled = 1
+let g:gitgutter_highlight_lines=1
+
+"========================[nvim-terminal-velocity]==============================
 "here is the help for nvim-terminal-velocity ,don't configure manual
 "   ,tj - open a new terminal window below the current window.
 "   ,tk - open a new terminal window above the current window.
@@ -335,3 +333,12 @@ let g:python3_host_prog = '/usr/bin/python3.4'
 :nnoremap <A-j> <C-w>j
 :nnoremap <A-k> <C-w>k
 :nnoremap <A-l> <C-w>l
+
+
+"===============[ctrlp_funky]=================================================
+let g:ctrlp_funky_matchtype = 'path'
+let g:ctrlp_funky_syntax_highlight = 1
+nnoremap <Leader>fu :CtrlPFunky<Cr>
+" narrow the list down with a word under cursor
+nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
+
