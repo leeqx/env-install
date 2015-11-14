@@ -24,11 +24,14 @@ Ctrl＋t＋］粘贴刚复制的内容
 ## Install neovim 
 see https://github.com/neovim  
 python module for neovim  
+
 0. For linux
 see https://github.com/neovim/neovim/issues/3396  
+
 0. For mac
   see  http://skipperkongen.dk/2011/11/13/installing-virtual-environment-on-mac/
-  sedd http://blog.csdn.net/t1gerr/article/details/9956455  
+  see  http://blog.csdn.net/t1gerr/article/details/9956455  
+
 0. Configure for neovim  
 copy init.vim to `~/.config/nvim/`  
 configure in `~/.zshrc`  
