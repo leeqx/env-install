@@ -41,3 +41,9 @@ configure in `~/.zshrc`
 copy `./vimconf/.vim` into `~/.config/nvim/`  
 and then open nvim execute `:PluginInstall`   
 
+## Other
+You need to editor init.vim to change the path according to you systhem
+
+0. set rtp+=~/.config/nvim/bundle/Vundle.vim
+0. let g:python_host_prog = '/home/nano/virtual_env/neovim/bin/python'
+0. set runtimepath^=~/.config/nvim/bundle/ctrlp.vim

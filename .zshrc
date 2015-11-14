@@ -54,7 +54,7 @@ plugins=(git)
 
 # User configuration
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/3rd/bin/:/usr/local/3rd/share/:/Users/nano/bin/:/usr/local/Cellar/tmux/1.9a/bin:/usr/local/Cellar/gcc49/4.9.2/bin:/usr/local/Cellar/lua/5.2.3_1/bin/:/usr/local/Cellar/luajit/2.0.3_1/bin:/usr/local/Cellar/unrar/5.2.3/bin"
+export PATH="/home/nano/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/3rd/bin/:/usr/local/3rd/share/:/Users/nano/bin/:/usr/local/Cellar/tmux/1.9a/bin:/usr/local/Cellar/gcc49/4.9.2/bin:/usr/local/Cellar/lua/5.2.3_1/bin/:/usr/local/Cellar/luajit/2.0.3_1/bin:/usr/local/Cellar/unrar/5.2.3/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh

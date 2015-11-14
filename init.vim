@@ -1,5 +1,5 @@
 " Bundle Vundle configurations-
-let g:python_host_prog = '~/virtual_env/neovim/bin/python'
+let g:python_host_prog = '/home/nano/virtual_env/neovim/bin/python'
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
