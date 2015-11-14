@@ -1,5 +1,5 @@
-" Bundle Vundle configurations
-let g:python3_host_prog = '~/virtual_env/neovim/bin/python'
+" Bundle Vundle configurations-
+let g:python_host_prog = '~/virtual_env/neovim/bin/python'
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -37,7 +37,6 @@ Plugin 'DoxygenToolkit.vim'
 Plugin 'edkolev/tmuxline.vim'
 Plugin 'oblitum/rainbow'
 Plugin 'vim-scripts/a.vim'
-Plugin 'moll/vim-bbye'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
@@ -53,6 +52,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'jacobsimpson/nvim-terminal-velocity'
 Plugin 'tacahiroy/ctrlp-funky'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'ervandew/supertab'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -111,10 +111,6 @@ map gd :bd<cr>
 "":nmap <silent> <C-J> :wincmd j<CR>
 "":nmap <silent> <C-K> :wincmd k<CR>
 "":nmap <silent> <C-L> :wincmd l<CR>
-
-"=====[ Remap the Escap Key "]================================================
-:inoremap jk <Esc>
-":set timeout timeoutlen=1000 ttimeoutlen=100
 
 " =====[ Syntastic Config ]===================================================
 set statusline+=%#warningmsg#
@@ -292,25 +288,6 @@ let g:promptline_theme = 'airline'
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 
-"================[kien/ctrlp]========================= ========================
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_open_multiple_files = 'v'   "open multiple file vsp
-set wildignore+=*.so,*.swp,*.zip,*.o,*.bin
-set runtimepath^=~/.config/nvim/bundle/ctrlp.vim
-nmap mix :CtrlPMixed<cr>
-nmap buf :CtrlPBuffer<cr>
-let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:20'
-
-"<c-f>和<c-p> 在各个模式下转换
-"<c-d> 使用文件名搜索代替全路径搜索
-"<c-r> 使用正则模式
-"<c-j>和<c-k> 上下选择文件
-"<c-t> <c-v>和<c-x> 在新的tab或者新的分割窗口打开选择的文件
-"<c-n>和<c-p> 找到之前或者之后查找的字符串
-"<c-y> 创建一个新的文件
-"<c-z> 标记或者取消标记多个文件然后使用<c-o>打开它们"
-
 "================[airblade/vim-gitgutter]========================= ============
 let g:gitgutter_enabled = 1
 let g:gitgutter_highlight_lines=1
@@ -341,4 +318,60 @@ let g:ctrlp_funky_syntax_highlight = 1
 nnoremap <Leader>fu :CtrlPFunky<Cr>
 " narrow the list down with a word under cursor
 nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
+
+"================[kien/ctrlp]========================= ========================
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_open_multiple_files = 'v'   "open multiple file vsp
+set wildignore+=*.so,*.swp,*.zip,*.o,*.bin
+set runtimepath^=~/.config/nvim/bundle/ctrlp.vim
+nmap mix :CtrlPMixed<cr>
+nmap buf :CtrlPBuffer<cr>
+let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:50'
+let g:ctrlp_prompt_mappings = {
+    \ 'PrtBS()':              ['<bs>', '<c-]>'],
+    \ 'PrtDelete()':          ['<del>'],
+    \ 'PrtDeleteWord()':      ['<c-w>'],
+    \ 'PrtClear()':           ['<c-u>'],
+    \ 'PrtSelectMove("j")':   ['<c-j>', '<down>'],
+    \ 'PrtSelectMove("k")':   ['<c-k>', '<up>'],
+    \ 'PrtSelectMove("t")':   ['<Home>', '<kHome>'],
+    \ 'PrtSelectMove("b")':   ['<End>', '<kEnd>'],
+    \ 'PrtSelectMove("u")':   ['<PageUp>', '<kPageUp>'],
+    \ 'PrtSelectMove("d")':   ['<PageDown>', '<kPageDown>'],
+    \ 'PrtHistory(-1)':       ['<c-n>'],
+    \ 'PrtHistory(1)':        ['<c-p>'],
+    \ 'AcceptSelection("e")': ['<cr>', '<2-LeftMouse>'],
+    \ 'AcceptSelection("h")': ['<c-x>', '<c-cr>', '<c-s>'],
+    \ 'AcceptSelection("t")': ['<c-t>'],
+    \ 'AcceptSelection("v")': ['<c-v>', '<RightMouse>'],
+    \ 'ToggleFocus()':        ['<s-tab>'],
+    \ 'ToggleRegex()':        ['<c-r>'],
+    \ 'ToggleByFname()':      ['<c-d>'],
+    \ 'ToggleType(1)':        ['<c-f>', '<c-up>'],
+    \ 'ToggleType(-1)':       ['<c-b>', '<c-down>'],
+    \ 'PrtExpandDir()':       ['<tab>'],
+    \ 'PrtInsert("c")':       ['<MiddleMouse>', '<insert>'],
+    \ 'PrtInsert()':          ['<c-\>'],
+    \ 'PrtCurStart()':        ['<c-a>'],
+    \ 'PrtCurEnd()':          ['<c-e>'],
+    \ 'PrtCurLeft()':         ['<c-h>', '<left>', '<c-^>'],
+    \ 'PrtCurRight()':        ['<c-l>', '<right>'],
+    \ 'PrtClearCache()':      ['<F5>'],
+    \ 'PrtDeleteEnt()':       ['<F7>'],
+    \ 'CreateNewFile()':      ['<c-y>'],
+    \ 'MarkToOpen()':         ['<c-z>'],
+    \ 'OpenMulti()':          ['<c-o>'],
+    \ 'PrtExit()':            ['<esc>', '<c-c>', '<c-g>'],
+    \ }
+
+"<c-f>和<c-p> 在各个模式下转换
+"<c-d> 使用文件名搜索代替全路径搜索
+"<c-r> 使用正则模式
+"<c-j>和<c-k> 上下选择文件
+"<c-t> <c-v>和<c-x> 在新的tab或者新的分割窗口打开选择的文件
+"<c-n>和<c-p> 找到之前或者之后查找的字符串
+"<c-y> 创建一个新的文件
+"<c-z> 标记或者取消标记多个文件然后使用<c-o>打开它们"
+
 
