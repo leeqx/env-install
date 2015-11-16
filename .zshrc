@@ -101,7 +101,8 @@ alias sh='/usr/bin/zsh'
 #alias nm='gcc-nm'
 
 #source "/usr/bin/virtualenvwrapper.sh"
-#export WORKON_HOME="/home/roop/virtual_env/"
+source "/Users/nano/virtual_env/neovim/bin/activate"
+export WORKON_HOME="/Users/nano/virtual_env/"
 
 alias vi='nvim -u ~/.config/nvim/init.vim'
 
