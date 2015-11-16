@@ -101,3 +101,7 @@ Plugin 'tacahiroy/ctrlp-funky'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'ervandew/supertab'
 ```
+### QA
+0. YCM support libs too old, PLEASE RECOMPILE？
+ A：Please remove`~/.config/nvim/bundle/YouCompleteMe/` or `~/.vim/bundle/YouCompleteMe/`  
+    then open vim or nvim do `:PluginInstall` to reinstall YCM
