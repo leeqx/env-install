@@ -161,7 +161,7 @@ noremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>" "回车选中
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 nnoremap <leader>jd :YcmCompleter GoTo<CR>
 nnoremap <leader>jc :YcmCompleter GoToDeclaration<CR>
-nnoremap <leader>je :YcmCompleter GoDefinition<CR>
+nnoremap <leader>je :YcmCompleter GoToDefinition<CR>
 nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 
