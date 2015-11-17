@@ -41,7 +41,6 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'bbchung/clighter'
-Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'troydm/zoomwintab.vim'
 Plugin 'godlygeek/tabular'
 
@@ -208,6 +207,7 @@ let g:clighter_compile_args = ['-isystem /usr/lib/llvm-3.5/lib/clang/3.5.0/inclu
                               \'-I/home/roop/project',
                               \'-std=c++03']
 let g:clighter_libclang_file="/Users/nano/.config/nvim/bundle/YouCompleteMe/third_party/ycmd/libclang.dylib"
+nmap <silent> <Leader>r :call clighter#Rename()<CR>
 
 
 
