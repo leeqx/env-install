@@ -159,7 +159,7 @@ let g:ycm_filepath_completion_use_working_dir = 1
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 nnoremap <leader>jd :YcmCompleter GoTo<CR>
 nnoremap <leader>jc :YcmCompleter GoToDeclaration<CR>
-nnoremap <leader>je :YcmCompleter GoDefinition<CR>
+nnoremap <leader>je :YcmCompleter GoToDefinition<CR>
 nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 
