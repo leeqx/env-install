@@ -41,7 +41,6 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'bbchung/clighter'
-Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'troydm/zoomwintab.vim'
 Plugin 'godlygeek/tabular'
 
@@ -206,6 +205,7 @@ let g:clighter_compile_args = ['-isystem /usr/lib/llvm-3.5/lib/clang/3.5.0/inclu
                               \'-I/home/roop/project',
                               \'-std=c++03']
 let g:clighter_libclang_file="/home/nano/.config/nvim/bundle/YouCompleteMe/third_party/ycmd/libclang.so"
+nmap <silent> <Leader>r :call clighter#Rename()<CR>
 
 "=====[ Confgiure the screen ]================================================
 "let g:gruvbox_improved_warnings = 1
@@ -231,7 +231,6 @@ set laststatus=2
 let g:airline_powerline_fonts = 1
 set number
 syntax on
-"set tags=tags;
 set expandtab
 
 nnoremap <F4> :wa <bar> :make!<cr>
