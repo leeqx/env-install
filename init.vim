@@ -143,7 +143,6 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 "=====[ vim-cpp-enhanced-highlight ]==========================================
 let g:cpp_class_scope_highlight = 1
 let g:cpp_experimental_template_highlight = 1
-let g:clighter_libclang_file="/home/nano/.vim/.vim.bak.10749/bundle/YouCompleteMe/third_party/ycmd/libclang.so"
 
 "=====[ YouCompleteMe Configurations ]========================================
 "let g:ycm_min_num_of_chars_for_completion = 99
@@ -203,12 +202,10 @@ let g:tmuxline_preset = 'full'
 let g:indentLine_color_tty_light = 7 " (default: 4)
 let g:indentLine_color_dark = 1 " (default: 2)
 let g:indentLine_color_term = 239
-
-" =====[ clighter ]===========================================================
 let g:clighter_compile_args = ['-isystem /usr/lib/llvm-3.5/lib/clang/3.5.0/include',
                               \'-I/home/roop/project',
                               \'-std=c++03']
-
+let g:clighter_libclang_file="/home/nano/.config/nvim/bundle/YouCompleteMe/third_party/ycmd/libclang.so"
 
 "=====[ Confgiure the screen ]================================================
 "let g:gruvbox_improved_warnings = 1
