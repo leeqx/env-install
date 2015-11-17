@@ -102,10 +102,10 @@ alias sh='/usr/bin/zsh'
 #alias nm='gcc-nm'
 
 #source "/usr/bin/virtualenvwrapper.sh"
-source "/Users/nano/virtual_env/neovim/bin/activate"
-export WORKON_HOME="/Users/nano/virtual_env/"
+source "$HOME/virtual_env/neovim/bin/activate"
+export WORKON_HOME="$HOME/virtual_env/"
 
-alias vi='nvim -u ~/.config/nvim/init.vim'
+alias vi='/usr/local/bin/nvim -u ~/.config/nvim/init.vim'
 
 
 #PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'

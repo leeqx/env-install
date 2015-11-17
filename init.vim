@@ -148,6 +148,7 @@ let g:airline_exclude_preview = 1
 "=====[ vim-cpp-enhanced-highlight ]==========================================
 let g:cpp_class_scope_highlight = 1
 let g:cpp_experimental_template_highlight = 1
+let g:clighter_libclang_file="/home/nano/.vim/.vim.bak.10749/bundle/YouCompleteMe/third_party/ycmd/libclang.so"
 
 "=====[ YouCompleteMe Configurations ]========================================
 "let g:ycm_min_num_of_chars_for_completion = 99
