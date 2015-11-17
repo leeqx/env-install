@@ -156,6 +156,8 @@ let g:ycm_confirm_extra_conf = 0
 let g:ycm_auto_trigger = 50
 let g:ycm_key_detailed_diagnostics = '<leader>d'
 let g:ycm_filepath_completion_use_working_dir = 1
+set completeopt=longest,menu
+noremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>" "回车选中
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 nnoremap <leader>jd :YcmCompleter GoTo<CR>
 nnoremap <leader>jc :YcmCompleter GoToDeclaration<CR>
@@ -202,11 +204,11 @@ let g:tmuxline_preset = 'full'
 let g:indentLine_color_tty_light = 7 " (default: 4)
 let g:indentLine_color_dark = 1 " (default: 2)
 let g:indentLine_color_term = 239
-
-" =====[ clighter ]===========================================================
 let g:clighter_compile_args = ['-isystem /usr/lib/llvm-3.5/lib/clang/3.5.0/include',
                               \'-I/home/roop/project',
                               \'-std=c++03']
+let g:clighter_libclang_file="/Users/nano/.config/nvim/bundle/YouCompleteMe/third_party/ycmd/libclang.dylib"
+
 
 
 "=====[ Confgiure the screen ]================================================
