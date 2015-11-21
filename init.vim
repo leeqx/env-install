@@ -18,8 +18,8 @@ Plugin 'fatih/vim-go'
 Plugin 'tpope/vim-fugitive'
 Plugin 'oblitum/YouCompleteMe' , { 'do': './install.py --clang-completer' }
 Plugin 'scrooloose/syntastic'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
+"Plugin 'SirVer/ultisnips'
+"Plugin 'honza/vim-snippets'
 Plugin 'bling/vim-airline'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'morhetz/gruvbox'
@@ -135,9 +135,9 @@ let g:airline_exclude_preview = 1
 "=====[ ultisnips ]===========================================================
 " Trigger configuration. Do not use <tab> if you use
 " https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<c-e>"
-let g:UltiSnipsJumpForwardTrigger="<c-c>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+"let g:UltiSnipsExpandTrigger="<c-e>"
+"let g:UltiSnipsJumpForwardTrigger="<c-c>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 "=====[ vim-cpp-enhanced-highlight ]==========================================
 let g:cpp_class_scope_highlight = 1
