@@ -52,6 +52,10 @@ Plugin 'jacobsimpson/nvim-terminal-velocity'
 Plugin 'tacahiroy/ctrlp-funky'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'ervandew/supertab'
+Plugin 'xolox/vim-lua-ftplugin'
+Plugin 'xolox/vim-misc'
+Plugin 'vim-scripts/bash-support.vim'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
