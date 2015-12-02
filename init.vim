@@ -1,5 +1,5 @@
 " Bundle Vundle configurations-
-let g:python_host_prog = '/home/nano/virtual_env/neovim/bin/python'
+let g:python_host_prog = '/home/roop/virtual_env/neovim/bin/python'
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -204,7 +204,7 @@ let g:indentLine_color_term = 239
 let g:clighter_compile_args = ['-isystem /usr/lib/llvm-3.5/lib/clang/3.5.0/include',
                               \'-I/home/roop/project',
                               \'-std=c++03']
-let g:clighter_libclang_file="/home/nano/.config/nvim/bundle/YouCompleteMe/third_party/ycmd/libclang.so"
+let g:clighter_libclang_file="/home/roop/.config/nvim/bundle/YouCompleteMe/third_party/ycmd/libclang.so"
 nmap <silent> <Leader>r :call clighter#Rename()<CR>
 
 "=====[ Confgiure the screen ]================================================
