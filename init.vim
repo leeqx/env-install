@@ -52,7 +52,7 @@ Plugin 'jacobsimpson/nvim-terminal-velocity'
 Plugin 'tacahiroy/ctrlp-funky'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'ervandew/supertab'
-Plugin 'xolox/vim-lua-ftplugin'
+"Plugin 'xolox/vim-lua-ftplugin'
 Plugin 'xolox/vim-misc'
 Plugin 'vim-scripts/bash-support.vim'
 
@@ -67,7 +67,7 @@ filetype plugin indent on    " required
 "=============================================================================
 
 set ttimeoutlen=50
-set synmaxcol=120
+set synmaxcol=1020
 set nocursorline
 set re=1
 :redraw
@@ -217,18 +217,18 @@ let g:tmuxline_preset = 'full'
 "let g:gruvbox_contrast_dark = 'hard'
 "colorscheme gruvbox
 
-"let g:rehash256 = 1
+let g:rehash256 = 1
 set t_Co=256
 syntax enable
-set background=dark
-colorscheme solarized
-let g:solarized_italic=1
-let g:solarized_underline=1
-let g:solarized_bold=2
+"set background=dark
+"colorscheme solarized
+"let g:solarized_italic=1
+"let g:solarized_underline=1
+"let g:solarized_bold=2
 
 "colorscheme wombat256
 "colorscheme jellybeans
-"colorscheme molokai
+colorscheme molokai
 
 "=====[ Configure Airline ]===================================================
 set laststatus=2
