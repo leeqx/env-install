@@ -67,7 +67,7 @@ filetype plugin indent on    " required
 "=============================================================================
 
 set ttimeoutlen=50
-set synmaxcol=120
+set synmaxcol=1020
 set nocursorline
 set re=1
 :redraw
