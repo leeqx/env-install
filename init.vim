@@ -55,6 +55,8 @@ Plugin 'ervandew/supertab'
 "Plugin 'xolox/vim-lua-ftplugin'
 Plugin 'xolox/vim-misc'
 Plugin 'vim-scripts/bash-support.vim'
+Plugin 'mileszs/ack.vim'
+Plugin 'vim-scripts/indent-motion'
 
 
 " All of your Plugins must be added before the following line
