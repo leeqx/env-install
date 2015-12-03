@@ -18,8 +18,8 @@ Plugin 'fatih/vim-go'
 Plugin 'tpope/vim-fugitive'
 Plugin 'oblitum/YouCompleteMe' , { 'do': './install.py --clang-completer' }
 Plugin 'scrooloose/syntastic'
-"Plugin 'SirVer/ultisnips'
-"Plugin 'honza/vim-snippets'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
 Plugin 'bling/vim-airline'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'morhetz/gruvbox'
@@ -52,9 +52,12 @@ Plugin 'jacobsimpson/nvim-terminal-velocity'
 Plugin 'tacahiroy/ctrlp-funky'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'ervandew/supertab'
-"Plugin 'xolox/vim-lua-ftplugin'
+Plugin 'xolox/vim-lua-ftplugin'
 Plugin 'xolox/vim-misc'
 Plugin 'vim-scripts/bash-support.vim'
+Plugin 'mileszs/ack.vim'
+Plugin 'vim-scripts/indent-motion'
+
 
 
 " All of your Plugins must be added before the following line
@@ -220,15 +223,15 @@ let g:tmuxline_preset = 'full'
 let g:rehash256 = 1
 set t_Co=256
 syntax enable
-"set background=dark
-"colorscheme solarized
-"let g:solarized_italic=1
-"let g:solarized_underline=1
-"let g:solarized_bold=2
+set background=dark
+colorscheme solarized
+let g:solarized_italic=1
+let g:solarized_underline=1
+let g:solarized_bold=2
 
 "colorscheme wombat256
 "colorscheme jellybeans
-colorscheme molokai
+"colorscheme molokai
 
 "=====[ Configure Airline ]===================================================
 set laststatus=2
