@@ -51,7 +51,7 @@ to install developer tools :git expect tmux vim-plugins neovim
      * <leader>tj
      * <leader>tk
      * <leader>tl
-     * <leader>th
+     * <leader>th  
      在新建的term窗口按ESC退出terminal模式，回到normal模式，然后可以采用vi的快捷键复制  
      再跳到vi的文件中进行粘贴。
      在terminal和vi 窗口之间切换，可以按ESC,ESC（注意是两次）回到normal模式然后kjhl上
@@ -100,9 +100,11 @@ Plugin 'ervandew/supertab'
 ### QA
   0. YCM support libs too old, PLEASE RECOMPILE？
     A：Please remove`~/.config/nvim/bundle/YouCompleteMe/` or `~/.vim/bundle/YouCompleteMe/`  
-    then open vim or nvim do `:PluginInstall` to reinstall YCM
+    then open vim or nvim do `:PluginInstall` to reinstall YCM  
+
 ### solarise color
-  ```
+
+   ```shell
     SOLARIZED HEX     16/8 TERMCOL  XTERM/HEX   L*A*B      RGB         HSB  
     --------- ------- ---- -------  ----------- ---------- ----------- -----------
     base03    #002b36  8/4 brblack  234 #1c1c1c 15 -12 -12   0  43  54 193 100  21
@@ -124,10 +126,10 @@ Plugin 'ervandew/supertab'
  ```   
 ### Color theme  
   0. Terminal color theme ubuntu  
-   **Solarized homepage**:   http://ethanschoonover.com/solarized  
-   **Solarized repository**: https://github.com/altercation/solarized  
-   **Gnome Terminal Colors Solarized repository**]: https://github.com/sigurdga/gnome-terminal-colors-solarized  
-   **dircolors solarised color theme**: https://github.com/seebi/dircolors-solarized  
+   [**Solarized homepage**](http://ethanschoonover.com/solarized)  
+   [**Solarized repository**](https://github.com/altercation/solarized)  
+   [**Gnome Terminal Colors Solarized repository**](https://github.com/sigurdga/gnome-terminal-colors-solarized)    
+   [**dircolors solarised color theme**](https://github.com/seebi/dircolors-solarized)   
 
   0. vim && iterm theme  
      https://github.com/altercation/solarized/  
