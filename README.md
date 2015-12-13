@@ -41,26 +41,24 @@ to install developer tools :git expect tmux vim-plugins neovim
     copy `./vimconf/.vim` into `~/.config/nvim/`  
     and then open nvim execute `:PluginInstall`   
 
-  ### Other
-     You need to editor init.vim to change the path according to you systhem
-
-    0. set rtp+=~/.config/nvim/bundle/Vundle.vim
-    0. let g:python_host_prog = '/home/nano/virtual_env/neovim/bin/python'
-    0. set runtimepath^=~/.config/nvim/bundle/ctrlp.vim
-  ### neovim nvim terminal
-    normal 模式下下面组合按键分别创建不同位置的term  
-    0. <leader>tj
-    0. <leader>tk
-    0. <leader>tl
-    0. <leader>th
-
-    在新建的term窗口按ESC退出terminal模式，回到normal模式，然后可以采用vi的快捷键复制  
-    再跳到vi的文件中进行粘贴。
-    在terminal和vi 窗口之间切换，可以按ESC,ESC（注意是两次）回到normal模式然后kjhl上
-    下左右移动或者是Ctrl-w。
+  0. Other
+     You need to editor init.vim to change the path according to you systhem  
+     0. set rtp+=~/.config/nvim/bundle/Vundle.vim
+     0. let g:python_host_prog = '/home/nano/virtual_env/neovim/bin/python'
+     0. set runtimepath^=~/.config/nvim/bundle/ctrlp.vim
+  0. neovim nvim terminal  
+     normal 模式下下面组合按键分别创建不同位置的term  
+     * <leader>tj
+     * <leader>tk
+     * <leader>tl
+     * <leader>th
+     在新建的term窗口按ESC退出terminal模式，回到normal模式，然后可以采用vi的快捷键复制  
+     再跳到vi的文件中进行粘贴。
+     在terminal和vi 窗口之间切换，可以按ESC,ESC（注意是两次）回到normal模式然后kjhl上
+     下左右移动或者是Ctrl-w。
     
 ## Plugin List 
-```shell
+  ```shell
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'Yggdroot/indentLine'
 Plugin 'fatih/vim-go'
@@ -100,10 +98,11 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'ervandew/supertab'
 ```
 ### QA
-0. YCM support libs too old, PLEASE RECOMPILE？
- A：Please remove`~/.config/nvim/bundle/YouCompleteMe/` or `~/.vim/bundle/YouCompleteMe/`  
+  0. YCM support libs too old, PLEASE RECOMPILE？
+    A：Please remove`~/.config/nvim/bundle/YouCompleteMe/` or `~/.vim/bundle/YouCompleteMe/`  
     then open vim or nvim do `:PluginInstall` to reinstall YCM
-```
+### solarise color
+  ```
     SOLARIZED HEX     16/8 TERMCOL  XTERM/HEX   L*A*B      RGB         HSB  
     --------- ------- ---- -------  ----------- ---------- ----------- -----------
     base03    #002b36  8/4 brblack  234 #1c1c1c 15 -12 -12   0  43  54 193 100  21
@@ -124,11 +123,11 @@ Plugin 'ervandew/supertab'
     green     #859900  2/2 green     64 #5f8700 60 -20  65 133 153   0  68 100  60
  ```   
 ### Color theme  
-0. Terminal color theme ubuntu  
- **Solarized homepage**:   http://ethanschoonover.com/solarized  
- **Solarized repository**: https://github.com/altercation/solarized  
- **Gnome Terminal Colors Solarized repository**]: https://github.com/sigurdga/gnome-terminal-colors-solarized  
- **dircolors solarised color theme**: https://github.com/seebi/dircolors-solarized  
+  0. Terminal color theme ubuntu  
+   **Solarized homepage**:   http://ethanschoonover.com/solarized  
+   **Solarized repository**: https://github.com/altercation/solarized  
+   **Gnome Terminal Colors Solarized repository**]: https://github.com/sigurdga/gnome-terminal-colors-solarized  
+   **dircolors solarised color theme**: https://github.com/seebi/dircolors-solarized  
 
-0. vim && iterm theme  
- https://github.com/altercation/solarized/  
+  0. vim && iterm theme  
+     https://github.com/altercation/solarized/  
