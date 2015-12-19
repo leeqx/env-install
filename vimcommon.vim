@@ -1,8 +1,8 @@
+" 该文件是不同平台下的vim/nvim共同配置
 " Bundle Vundle configurations-
-let g:python_host_prog = '/home/roop/virtual_env/neovim/bin/python'
-
 set nocompatible              " be iMproved, required
 filetype off                  " required
+filetype plugin indent on     " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.config/nvim/bundle/Vundle.vim
@@ -18,8 +18,8 @@ Plugin 'fatih/vim-go'
 Plugin 'tpope/vim-fugitive'
 Plugin 'oblitum/YouCompleteMe' , { 'do': './install.py --clang-completer' }
 Plugin 'scrooloose/syntastic'
-"Plugin 'SirVer/ultisnips'
-"Plugin 'honza/vim-snippets'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
 Plugin 'bling/vim-airline'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'morhetz/gruvbox'
@@ -40,7 +40,7 @@ Plugin 'vim-scripts/a.vim'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'bbchung/clighter'
+"Plugin 'bbchung/clighter'
 Plugin 'troydm/zoomwintab.vim'
 Plugin 'godlygeek/tabular'
 
@@ -48,25 +48,25 @@ Plugin 'godlygeek/tabular'
 
 "Add :myself"
 Plugin 'airblade/vim-gitgutter'
-"Plugin 'jacobsimpson/nvim-terminal-velocity'
+Plugin 'jacobsimpson/nvim-terminal-velocity'
 Plugin 'tacahiroy/ctrlp-funky'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'ervandew/supertab'
 Plugin 'xolox/vim-lua-ftplugin'
 Plugin 'xolox/vim-misc'
 Plugin 'vim-scripts/bash-support.vim'
+Plugin 'mileszs/ack.vim'
+Plugin 'vim-scripts/indent-motion'
+
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
-filetype plugin indent on    " required
-
-
-
 "=============================================================================
 "=============================================================================
 
 set ttimeoutlen=50
-set synmaxcol=120
+set synmaxcol=1020
 set nocursorline
 set re=1
 :redraw
@@ -77,7 +77,7 @@ set secure
 set tabstop=4
 set softtabstop=4
 set noexpandtab
-set colorcolumn=80
+set colorcolumn=1080
 :set cursorline
 :set t_ut=
 
@@ -201,14 +201,14 @@ omap / <Plug>(easymotion-tn)
 let g:tmuxline_preset = 'full'
 
 " =====[ clighter ]===========================================================
-let g:indentLine_color_tty_light = 7 " (default: 4)
-let g:indentLine_color_dark = 1 " (default: 2)
-let g:indentLine_color_term = 239
-let g:clighter_compile_args = ['-isystem /usr/lib/llvm-3.5/lib/clang/3.5.0/include',
-                              \'-I/home/roop/project',
-                              \'-std=c++11']
-let g:clighter_libclang_file="/home/nano/.config/nvim/bundle/YouCompleteMe/third_party/ycmd/libclang.so"
-nmap <silent> <Leader>r :call clighter#Rename()<CR>
+"let g:indentLine_color_tty_light = 7 " (default: 4)
+"let g:indentLine_color_dark = 1 " (default: 2)
+"let g:indentLine_color_term = 239
+"let g:clighter_compile_args = ['-isystem /usr/lib/llvm-3.5/lib/clang/3.5.0/include',
+"                             \'-I/home/roop/project',
+"                             \'-std=c++03']
+"let g:clighter_libclang_file="/home/roop/.config/nvim/bundle/YouCompleteMe/third_party/ycmd/libclang.so"
+"nmap <silent> <Leader>r :call clighter#Rename()<CR>
 
 "=====[ Confgiure the screen ]================================================
 "let g:gruvbox_improved_warnings = 1
@@ -216,14 +216,14 @@ nmap <silent> <Leader>r :call clighter#Rename()<CR>
 "let g:gruvbox_contrast_dark = 'hard'
 "colorscheme gruvbox
 
-"let g:rehash256 = 1
+let g:rehash256 = 1
 set t_Co=256
 syntax enable
 set background=dark
 colorscheme solarized
 let g:solarized_italic=1
 let g:solarized_underline=1
-let g:solarized_bold=1
+let g:solarized_bold=2
 
 "colorscheme wombat256
 "colorscheme jellybeans
@@ -259,9 +259,9 @@ augroup BgHighlight
     autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
     autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 
-    "autocmd BufReadPost quickfix map <buffer> <leader>qq :cclose<cr>
-    ""                          \|map <buffer> <c-p> <up>
-    ""                           \|map <buffer> <c-n> <down>
+    autocmd BufReadPost quickfix map <buffer> <leader>qq :cclose<cr>
+                              \|map <buffer> <c-p> <up>
+                               \|map <buffer> <c-n> <down>
 
     autocmd GuiEnter * set background&
     
@@ -302,14 +302,14 @@ let g:gitgutter_highlight_lines=1
 
 "========================nvim-terminal-emulator================================
 " exit term (ESC) and then ctrl-w+w  to switch term and editor
-"   tnoremap <A-h> <C-\><C-n><C-w>h
-"   tnoremap <A-j> <C-\><C-n><C-w>j
-"   tnoremap <A-k> <C-\><C-n><C-w>k
-"   tnoremap <A-l> <C-\><C-n><C-w>l
-"   nnoremap <A-h> <C-w>h
-"   nnoremap <A-j> <C-w>j
-"   nnoremap <A-k> <C-w>k
-"   nnoremap <A-l> <C-w>l
+"""":tnoremap <A-h> <C-\><C-n><C-w>h
+"""":tnoremap <A-j> <C-\><C-n><C-w>j
+"""":tnoremap <A-k> <C-\><C-n><C-w>k
+"""":tnoremap <A-l> <C-\><C-n><C-w>l
+"""":nnoremap <A-h> <C-w>h
+"""":nnoremap <A-j> <C-w>j
+"""":nnoremap <A-k> <C-w>k
+"""":nnoremap <A-l> <C-w>l
 
 
 "===============[ctrlp_funky]=================================================
