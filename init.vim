@@ -40,7 +40,7 @@ Plugin 'vim-scripts/a.vim'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'bbchung/clighter'
+"Plugin 'bbchung/clighter'
 Plugin 'troydm/zoomwintab.vim'
 Plugin 'godlygeek/tabular'
 
@@ -206,14 +206,14 @@ omap / <Plug>(easymotion-tn)
 let g:tmuxline_preset = 'full'
 
 " =====[ clighter ]===========================================================
-let g:indentLine_color_tty_light = 7 " (default: 4)
-let g:indentLine_color_dark = 1 " (default: 2)
-let g:indentLine_color_term = 239
-let g:clighter_compile_args = ['-isystem /usr/lib/llvm-3.5/lib/clang/3.5.0/include',
-                          \'-I/home/roop/project',
-                          \'-std=c++03']
-let g:clighter_libclang_file="/Users/nano/.config/nvim/bundle/YouCompleteMe/third_party/ycmd/libclang.dylib"
-nmap <silent> <Leader>r :call clighter#Rename()<CR>
+"let g:indentLine_color_tty_light = 7 " (default: 4)
+"let g:indentLine_color_dark = 1 " (default: 2)
+"let g:indentLine_color_term = 239
+"let g:clighter_compile_args = ['-isystem /usr/lib/llvm-3.5/lib/clang/3.5.0/include',
+                              \'-I/home/roop/project',
+                              \'-std=c++03']
+"let g:clighter_libclang_file="/home/nano/.config/nvim/bundle/YouCompleteMe/third_party/ycmd/libclang.so"
+"nmap <silent> <Leader>r :call clighter#Rename()<CR>
 
 
 "=====[ Confgiure the screen ]================================================
@@ -229,7 +229,7 @@ set background=dark
 colorscheme solarized
 let g:solarized_italic=1
 let g:solarized_underline=1
-let g:solarized_bold=1
+let g:solarized_bold=2
 
 "colorscheme wombat256
 "colorscheme jellybeans
