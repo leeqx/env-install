@@ -240,7 +240,6 @@ set laststatus=2
 let g:airline_powerline_fonts = 1
 set number
 syntax on
-"set tags=tags;
 set expandtab
 
 nnoremap <F4> :wa <bar> :make!<cr>
