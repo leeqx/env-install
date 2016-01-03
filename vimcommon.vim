@@ -147,7 +147,17 @@ let g:cpp_class_scope_highlight = 1
 let g:cpp_experimental_template_highlight = 1
 
 "=====[ YouCompleteMe Configurations ]========================================
-"let g:ycm_min_num_of_chars_for_completion = 99
+let g:ycm_min_num_of_chars_for_completion=2 " 从第2个键入字符就开始罗列匹配项
+set completeopt=longest,menu
+let g:ycm_collect_identifiers_from_tags_files=1 " 开启 YCM 基于标签引擎
+"在注释输入中也能补全
+let g:ycm_complete_in_comments = 1
+"在字符串输入中也能补全
+let g:ycm_complete_in_strings = 1
+"注释和字符串中的文字也会被收入补全
+let g:ycm_collect_identifiers_from_comments_and_strings = 0
+" 语法关键字补全"
+let g:ycm_seed_identifiers_with_syntax=1    
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
@@ -155,11 +165,11 @@ let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>']
 let g:ycm_key_invoke_completion = '<C-Space>'
 let g:ycm_confirm_extra_conf = 0
 
-let g:ycm_auto_trigger = 50
+let g:ycm_auto_trigger = 1
 let g:ycm_key_detailed_diagnostics = '<leader>d'
 let g:ycm_filepath_completion_use_working_dir = 1
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-nnoremap <leader>jd :YcmCompleter GoTo<CR>
+nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR> " 跳转到定义处
 nnoremap <leader>jc :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>je :YcmCompleter GoToDefinition<CR>
 nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>

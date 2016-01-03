@@ -56,7 +56,8 @@ to install developer tools :git expect tmux vim-plugins neovim
      再跳到vi的文件中进行粘贴。
      在terminal和vi 窗口之间切换，可以按ESC,ESC（注意是两次）回到normal模式然后kjhl上
      下左右移动或者是Ctrl-w。
-    
+  0.  vim 窗体最大化
+      ctrl+w+o 最大化，再执行一次可还原
 ## Plugin List 
   ```shell
 Plugin 'VundleVim/Vundle.vim'
