@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 " You should do this for neovim:
 " install 
 "   sudo apt-get install python-virtualenv
