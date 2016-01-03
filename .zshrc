@@ -54,7 +54,7 @@ plugins=(git)
 
 # User configuration
 
-export PATH="/home/nano/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/3rd/bin/:/usr/local/3rd/share/:/Users/nano/bin/:/usr/local/Cellar/tmux/1.9a/bin:/usr/local/Cellar/gcc49/4.9.2/bin:/usr/local/Cellar/lua/5.2.3_1/bin/:/usr/local/Cellar/luajit/2.0.3_1/bin:/usr/local/Cellar/unrar/5.2.3/bin"
+export PATH="$HOME/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/3rd/bin/:/usr/local/3rd/share/:/usr/local/Cellar/tmux/1.9a/bin:/usr/local/Cellar/gcc49/4.9.2/bin:/usr/local/Cellar/lua/5.2.3_1/bin/:/usr/local/Cellar/luajit/2.0.3_1/bin:/usr/local/Cellar/unrar/5.2.3/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 export LDD_LIBRARY=/Users/nano/.config/nvim/bundle/YouCompleteMe/third_party/ycmd:/Users/nano/.config/nvim/bundle/YouCompleteMe/third_party/
 
@@ -104,8 +104,10 @@ alias sh='/usr/bin/zsh'
 #source "/usr/bin/virtualenvwrapper.sh"
 source "$HOME/virtual_env/neovim/bin/activate"
 export WORKON_HOME="$HOME/virtual_env/"
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
 
 alias vi='/usr/local/bin/nvim -u ~/.config/nvim/init.vim'
+alias grep='ack-grep --color'
 
 
 #PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
