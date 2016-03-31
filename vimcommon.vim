@@ -416,7 +416,5 @@ let g:ctrlp_prompt_mappings = {
 
 
 "================================[vary]======================================
-let g:auto_striptrail = "python,ruby" # Set want to automatically remove
-#trailing spaces language types, the default is 'python'
-let g:auto_striptab = "python,ruby,cpp" # Set automatically converted 
-#into spaces <tab> type of language
+let g:auto_striptrail = 'python,ruby,cpp' " Set want to automatically remove trailing spaces language types, the default is 'python'
+let g:auto_striptab = 'python,ruby,cpp' "Set automatically converted into spaces <tab> type of language
