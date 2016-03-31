@@ -13,7 +13,7 @@ if [ ! -e $BACKUPDIR ];then
 	mkdir -p $BACKUPDIR
 fi
 
-if [ "$2" == "linux" ];then
+if [ "$2"=="linux" ];then
 	#apt-get install git
 	echo "1. install git"
 	git=`which git`
@@ -44,7 +44,7 @@ if [ "$2" == "linux" ];then
 
 	apt-get install g++
 	apt-get install cmake
-else
+elif [ "$2"=="mac" ];then
 	echo "1. install git"
 
 	git=`which git`
