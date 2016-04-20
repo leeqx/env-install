@@ -64,10 +64,10 @@ export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
  if [[ -n $SSH_CONNECTION ]]; then
-   export EDITOR='vim'
+   export EDITOR='nvim'
    bindkey -v 
-# else
-#   export EDITOR='nvim'
+ else
+   export EDITOR='nvim'
  fi
 
 # Compilation flags
@@ -93,22 +93,15 @@ alias oi='set -o vi'
 oi
 tm 
 alias sh='/usr/bin/zsh'
-#alias g++='g++-4.9'
-#alias gcc='gcc-4.9'
-#alias cpp='cpp-4.9'
-#alias c++='c++-4.9'
-#alias ar='gcc-ar'
-#alias nm='gcc-nm'
 
-#source "/usr/bin/virtualenvwrapper.sh"
 source "$HOME/virtual_env/neovim/bin/activate"
 export WORKON_HOME="$HOME/virtual_env/"
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
 
 alias vi='/usr/local/bin/nvim -u ~/.config/nvim/init.vim'
-alias grep='ack-grep --color'
+alias grep='ack-grep --color -iR'
+alias docker='sudo docker '
+alias sh='bash'
 
-
-#PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
 
 
