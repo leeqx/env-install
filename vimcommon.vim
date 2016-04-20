@@ -97,10 +97,9 @@ let g:indent_guides_auto_colors = 0
 let mapleader = ","
 
 "=====[ cycle through buffers ]===============================================
-map gn :bn<cr>
-map gp :bp<cr>
-map gd :bd<cr>
-
+nnoremap gd :bd<cr>
+nnoremap gn :bnext<CR>
+nnoremap gp :bprev<CR>
 " =====[ Add semicolins to the end of line ]==================================
 :nnoremap <leader>; ms$A;<ESC>`s
 :inoremap <leader>; <ESC>ms$A;<ESC>`s
