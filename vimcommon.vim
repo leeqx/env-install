@@ -16,7 +16,6 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'Yggdroot/indentLine'
 Plugin 'fatih/vim-go'
 Plugin 'tpope/vim-fugitive'
-Plugin 'oblitum/YouCompleteMe' , { 'do': './install.py --clang-completer' }
 Plugin 'scrooloose/syntastic'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
@@ -59,6 +58,7 @@ Plugin 'mileszs/ack.vim'
 Plugin 'vim-scripts/indent-motion'
 Plugin 'google/vim-ft-go'
 Plugin 'dongweiming/vary.vim' " 保存是自动去掉行尾空格，tab转空格
+Plugin 'rdnetto/YCM-Generator', { 'branch': 'stable'} "ＹＣＭ　配置文件生成工具"
 
 
 
@@ -417,3 +417,9 @@ let g:ctrlp_prompt_mappings = {
 "================================[vary]======================================
 let g:auto_striptrail = 'python,ruby,cpp' " Set want to automatically remove trailing spaces language types, the default is 'python'
 let g:auto_striptab = 'python,ruby,cpp' "Set automatically converted into spaces <tab> type of language
+"YCM-GENERATOR usage
+"Run ./config_gen.py PROJECT_DIRECTORY, where PROJECT_DIRECTORY is the root directory of your project's build system (i.e. the one containing the root Makefile, etc.)
+
+"You can also invoke it from within Vim using the :YcmGenerateConfig or :CCGenerateConfig commands to generate a config file for the current directory. 
+"These commands accept the same arguments as ./config_gen.py, but do not require the project directory to be specified (it defaults to the current working directory).
+"
