@@ -21,6 +21,7 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'bling/vim-airline'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'oblitum/YouCompleteMe' , { 'do': './install.py --clang-completer' }
 Plugin 'morhetz/gruvbox'
 Plugin 'tpope/vim-markdown'
 Plugin 'kopischke/unite-spell-suggest'
@@ -185,7 +186,7 @@ let g:ycm_semantic_triggers =  {
     \   'erlang' : [':'],
     \ }
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR> " 跳转到定义处
+nnoremap <leader>jd :YcmCompleter GoTo<CR> " 跳转到定义处
 nnoremap <leader>jc :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>je :YcmCompleter GoToDefinition<CR>
 nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
