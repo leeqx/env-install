@@ -6,4 +6,3 @@ let g:python_host_prog='/home/nano/virtual_env/neovim/bin/python'
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.config/nvim/bundle/Vundle.vim
-source ~/project/github/env-install/vimcommon.vim
