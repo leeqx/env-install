@@ -98,7 +98,7 @@ source "$HOME/virtual_env/neovim/bin/activate"
 export WORKON_HOME="$HOME/virtual_env/"
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
 
-alias vi='/usr/local/bin/nvim -u ~/.config/nvim/init.vim'
+alias vi='/usr/bin/nvim -u ~/.config/nvim/init.vim'
 alias grep='ack-grep --color -iR'
 alias docker='sudo docker '
 alias sh='bash'
