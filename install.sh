@@ -38,13 +38,6 @@ if [ "$2"=="linux" ];then
 	echo "4.install vim"
 	apt-get install vim
 
-	echo "5.install zsh"
-	apt-get install zsh
-	echo "please download oh-my-zsh from github and put then at /home/$user/"
-    cd /home/$user
-    git clone git@github.com:robbyrussell/oh-my-zsh.git
-    chown $user:$user oh-my-zsh
-    cd -
 	apt-get install g++
 	apt-get install cmake
 elif [ "$2"=="mac" ];then
@@ -82,6 +75,15 @@ else
 	exit
 fi
 
+echo "5.install zsh"
+apt-get install zsh
+cd /home/$user
+git clone git@github.com:robbyrussell/oh-my-zsh.git
+chown $user:$user oh-my-zsh
+cd oh-my-zsh
+mkdir -p /home/$user/.oh-my-zsh/themes
+cp * /home/$user/.oh-my-zsh -R
+cd -
 echo "6.setup configure .tmux.conf"
 # setup config
 function copy()
@@ -115,6 +117,7 @@ fi
 echo "8.setup zsh config"
 copy /home/$user/.zshrc $BACKUPDIR 
 copy .zshrc /home/$user
+copy oh-my-zsh.sh /home/$user/.oh-my-zsh
 
 echo "8.setup zsh as default sh"
 zshfile=`which zsh`
@@ -125,7 +128,6 @@ mkdir -p /home/$suer/.vim/bundle/tmux-powerline/
 chown $user /home/$suer/.vim/bundle/tmux-powerline/
 copy ./powerline*.zsh /home/$suer/.vim/bundle/tmux-powerline/
 copy ./.ycm_extra_conf.py /home/$user/
-mkdir -p /home/$user/.oh-my-zsh/themes
 chown $user /home/$user/.oh-my-zsh/themes
 copy ./agnoster-new.zsh-theme /home/$user/.oh-my-zsh/themes/agnoster-new.zsh-theme
 copy powerline_tmux_1.8.conf /home/$user/
