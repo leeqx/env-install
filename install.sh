@@ -56,6 +56,7 @@ function install_neovim()
     count=5
     while [[ $count -gt 0 ]];do
         apt-get install neovim
+        pip3 install neovim
         if [ $? -eq 0 ];then
             echo -e "$GREEN install neovim OK $DEFAULT"
             break;
@@ -207,12 +208,12 @@ if [ "$os"=="linux" ];then
     install_package expect
     install_package tmux
     install_package vim
-    install_neovim
     install_package python-dev 
     install_package python-pip 
     install_package python3-dev 
     install_package python3-pip
     install_virtualenv
+    install_neovim
 
     install_package ack-grep 
 	install_package g++
