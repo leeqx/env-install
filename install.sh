@@ -186,6 +186,22 @@ function install_sougo()
     fi
     cd  $project
 }
+function install_virtualenv()
+{
+    echo -e "$BLUE install virtualenv for neovim $DEFAULT"
+    pip install virtualenv
+    if [ $? -eq 0 ];then
+        echo -e "$GREEN install virtualenv OK $DEFAULT"
+        if [ ! -e /home/$user/virtual_env/ ];then
+            mkdir -p /home/$user/virtual_env/
+        fi
+        cd /home/$user/virtual_env
+        virtualenv neovim
+        chown -R $user:$user /home/$user/virtual_env
+    else
+        echo -e "$GREEN install virtualenv FAILED $DEFAULT"
+    fi
+}
 if [ "$os"=="linux" ];then
     install_package git
     install_package expect
@@ -196,13 +212,13 @@ if [ "$os"=="linux" ];then
     install_package python-pip 
     install_package python3-dev 
     install_package python3-pip
+    install_virtualenv
 
     install_package ack-grep 
 	install_package g++
     install_sougo
     install_package lua5.2
     install_package golang
-    echo -e "$BLUE configure terminal color $DEFAULT"
 elif [ "$os"=="Darwin" ];then
 	echo "1. install git"
 
