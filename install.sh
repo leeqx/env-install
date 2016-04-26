@@ -203,9 +203,6 @@ if [ "$os"=="linux" ];then
     install_package lua5.2
     install_package golang
     echo -e "$BLUE configure terminal color $DEFAULT"
-	cd $project/gnome-terminal-colors-solarized
-	bash set_dark.sh
-    cd  $project
 elif [ "$os"=="Darwin" ];then
 	echo "1. install git"
 
@@ -252,7 +249,10 @@ echo " cd /home/$user/.vim/bundle/YouCompleteMe/"
 echo " sudo ./install.sh --clang-completer --system-libclang"
 echo " If dhe git color is not correct you maybe to modify ~/.oh-my-zsh/lib/git.zsh:parse_git_dirty ,because ZSH_THEME_GIT_PROMPT_CLEAN is not empty and ZSH_THEME_GIT_PROMPT_CLEAN=%{^[[34m%}) which will cause the agnoster-new.zsh-theme check as dirty"
 echo " Finally,open terminal and edit configure to change font use powerline type $DEFAULT"
-
+echo "
+	cd $project/gnome-terminal-colors-solarized
+	bash set_dark.sh
+    "
 echo -e "$GREEN Now install vim or nvim plugin $DEFAULT"
 echo -e "$GREEN now reboot your system ,enjoy youself $DEFAULT"
     
