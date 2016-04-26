@@ -8,7 +8,7 @@ setopt AUTO_CD
 # time that oh-my-zsh is loaded.
 #ZSH_THEME="robbyrussell"
 #ZSH_THEME="powerline"
-ZSH_THEME="agnoster-new"
+ZSH_THEME="agnoster"
 #ZSH_THEME="kolo"
 export TERM="xterm-256color"
 
