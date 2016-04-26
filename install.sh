@@ -219,6 +219,7 @@ if [ "$os"=="linux" ];then
     install_sougo
     install_package lua5.2
     install_package golang
+    install_package curl
 elif [ "$os"=="Darwin" ];then
 	echo "1. install git"
 
