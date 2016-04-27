@@ -103,5 +103,15 @@ alias grep='ack-grep --color -iR'
 alias docker='sudo docker '
 alias sh='bash'
 
-
-
+# use ctrl-z instead of fg 
+fancy-ctrl-z () {
+  if [[ $#BUFFER -eq 0 ]]; then
+    BUFFER="fg"
+    zle accept-line
+  else
+    zle push-input
+    zle clear-screen
+  fi
+}
+zle -N fancy-ctrl-z
+bindkey '^Z' fancy-ctrl-z
