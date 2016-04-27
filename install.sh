@@ -221,6 +221,8 @@ if [ "$os"=="linux" ];then
     install_package lua5.2
     install_package golang
     install_package curl
+    install_package jq #json util
+    intial_package tree #ls diretory as tree
 elif [ "$os"=="Darwin" ];then
 	echo "1. install git"
 
