@@ -4,9 +4,6 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 filetype plugin indent on     " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.config/nvim/bundle/Vundle.vim
-
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
@@ -16,12 +13,12 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'Yggdroot/indentLine'
 Plugin 'fatih/vim-go'
 Plugin 'tpope/vim-fugitive'
-Plugin 'oblitum/YouCompleteMe' , { 'do': './install.py --clang-completer' }
 Plugin 'scrooloose/syntastic'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'bling/vim-airline'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'oblitum/YouCompleteMe' , { 'do': './install.py --clang-completer' }
 Plugin 'morhetz/gruvbox'
 Plugin 'tpope/vim-markdown'
 Plugin 'kopischke/unite-spell-suggest'
@@ -57,6 +54,9 @@ Plugin 'xolox/vim-misc'
 Plugin 'vim-scripts/bash-support.vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'vim-scripts/indent-motion'
+Plugin 'google/vim-ft-go'
+Plugin 'dongweiming/vary.vim' " 保存是自动去掉行尾空格，tab转空格
+Plugin 'rdnetto/YCM-Generator', { 'branch': 'stable'} "ＹＣＭ　配置文件生成工具"
 
 
 
@@ -95,10 +95,9 @@ let g:indent_guides_auto_colors = 0
 let mapleader = ","
 
 "=====[ cycle through buffers ]===============================================
-map gn :bn<cr>
-map gp :bp<cr>
-map gd :bd<cr>
-
+nnoremap gd :bd<cr>
+nnoremap gn :bnext<CR>
+nnoremap gp :bprev<CR>
 " =====[ Add semicolins to the end of line ]==================================
 :nnoremap <leader>; ms$A;<ESC>`s
 :inoremap <leader>; <ESC>ms$A;<ESC>`s
@@ -184,7 +183,7 @@ let g:ycm_semantic_triggers =  {
     \   'erlang' : [':'],
     \ }
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR> " 跳转到定义处
+nnoremap <leader>jd :YcmCompleter GoTo<CR> " 跳转到定义处
 nnoremap <leader>jc :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>je :YcmCompleter GoToDefinition<CR>
 nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
@@ -236,23 +235,36 @@ let g:tmuxline_preset = 'full'
 "nmap <silent> <Leader>r :call clighter#Rename()<CR>
 
 "=====[ Confgiure the screen ]================================================
-"let g:gruvbox_improved_warnings = 1
-"let g:gruvbox_italic = 1
-"let g:gruvbox_contrast_dark = 'hard'
-"colorscheme gruvbox
+let g:gruvbox_improved_warnings = 1
+let g:gruvbox_italic = 1
+let g:gruvbox_contrast_dark = 'hard'
+colorscheme gruvbox
 
 let g:rehash256 = 1
 set t_Co=256
 syntax enable
 set background=dark
-colorscheme solarized
-let g:solarized_italic=1
-let g:solarized_underline=1
-let g:solarized_bold=2
+"colorscheme solarized
+"let g:solarized_italic=1
+"let g:solarized_underline=1
+"let g:solarized_bold=2
 
 "colorscheme wombat256
 "colorscheme jellybeans
 "colorscheme molokai
+"colorscheme blacklight
+"colorscheme busierbee
+"colorscheme C64
+"colorscheme greenvision
+"colorscheme herokudoc
+colorscheme holokai
+"colorscheme hornet
+"colorscheme iceberg
+"colorscheme lucius
+"colorscheme monokain
+"colorscheme Tomorrow
+"colorscheme up
+"colorscheme zenburn
 
 "=====[ Configure Airline ]===================================================
 set laststatus=2
@@ -272,30 +284,30 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
  
 
 
-augroup BgHighlight
-    autocmd!
-    autocmd WinEnter * highlight ColorColumn ctermbg=yellow
-    autocmd WinEnter * set colorcolumn=80
-    autocmd WinLeave * set colorcolumn=0
-    autocmd WinEnter * set cul
-    autocmd WinLeave * set nocul
+""  augroup BgHighlight
+""      autocmd!
+""      autocmd WinEnter * highlight ColorColumn ctermbg=yellow
+""      autocmd WinEnter * set colorcolumn=80
+""      autocmd WinLeave * set colorcolumn=0
+""      autocmd WinEnter * set cul
+""      autocmd WinLeave * set nocul
 
-    "=====[ Indent Guidelines ]===============================================
-    autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
-    autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
+""      "=====[ Indent Guidelines ]===============================================
+""      autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
+""      autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 
-    autocmd BufReadPost quickfix map <buffer> <leader>qq :cclose<cr>
-                              \|map <buffer> <c-p> <up>
-                               \|map <buffer> <c-n> <down>
+""      autocmd BufReadPost quickfix map <buffer> <leader>qq :cclose<cr>
+""                                \|map <buffer> <c-p> <up>
+""                                 \|map <buffer> <c-n> <down>
 
-    autocmd GuiEnter * set background&
-    
-    "=====[ makefile binding ]================================================
-    autocmd  BufRead,BufNewFile  *.cpp
-        \ let &l:makeprg
-        \ = 'make -f '.fnameescape(
-            \substitute(expand('%'), '\m_test\.cpp$', '.makefile', ''))
-augroup END
+""      autocmd GuiEnter * set background&
+""      
+""      "=====[ makefile binding ]================================================
+""      autocmd  BufRead,BufNewFile  *.cpp
+""          \ let &l:makeprg
+""          \ = 'make -f '.fnameescape(
+""              \substitute(expand('%'), '\m_test\.cpp$', '.makefile', ''))
+""  augroup END
 
 nnoremap <silent> ]<Space> :<C-u>put =repeat(nr2char(10),v:count)<Bar>execute"'[-1"<CR>
 nnoremap <silent> [<Space> :<C-u>put!=repeat(nr2char(10),v:count)<Bar>execute"']+1"<CR>
@@ -353,6 +365,7 @@ set runtimepath^=~/.config/nvim/bundle/ctrlp.vim
 nmap mix :CtrlPMixed<cr>
 nmap buf :CtrlPBuffer<cr>
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:50'
+let g:ctrlp_extensions = ['funky']
 let g:ctrlp_prompt_mappings = {
     \ 'PrtBS()':              ['<bs>', '<c-]>'],
     \ 'PrtDelete()':          ['<del>'],
@@ -400,3 +413,12 @@ let g:ctrlp_prompt_mappings = {
 "<c-z> 标记或者取消标记多个文件然后使用<c-o>打开它们"
 
 
+"================================[vary]======================================
+let g:auto_striptrail = 'python,ruby,cpp' " Set want to automatically remove trailing spaces language types, the default is 'python'
+let g:auto_striptab = 'python,ruby,cpp' "Set automatically converted into spaces <tab> type of language
+"YCM-GENERATOR usage
+"Run ./config_gen.py PROJECT_DIRECTORY, where PROJECT_DIRECTORY is the root directory of your project's build system (i.e. the one containing the root Makefile, etc.)
+
+"You can also invoke it from within Vim using the :YcmGenerateConfig or :CCGenerateConfig commands to generate a config file for the current directory. 
+"These commands accept the same arguments as ./config_gen.py, but do not require the project directory to be specified (it defaults to the current working directory).
+"
