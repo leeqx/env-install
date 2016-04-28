@@ -19,7 +19,24 @@ to install developer tools :git expect tmux vim-plugins neovim
      然后可以使用vim快捷店 h、j、k、l上下左右移动
      在滚屏模式下，v 进入选择模式采用以上键移动，然后y复制退出滚屏模式；
      Ctrl＋t＋］粘贴刚复制的内容
+  0. 最大化  
+     Ctrl + t + z 可以使的当前分窗口最大化，再输入一次则可以恢复  
 
+## vim 快捷键  
+  0. 搜索文件  
+     0. 在normal 模式，使用快捷键：`ctrl-p`。打开ctrlp之后可以通过`ctrl-b`快捷键在文件名搜索、buffer搜索、函数名搜索（当前打开文件)（这几种模式都是通过方向键上下移动）
+     0. 在文件名搜索模式下可以：`ctrl-y`在当前目录下创建文件；  
+     0. 在文件名搜索模式下`ctrl-z` 标记文件，`ctrl-o` 打开所有标记的文件  
+  0. 在打开的文件中跳转  
+    在nomoral模式下`gn`下一个 `gp`上一个 `gd`关闭当前文件
+  0. 打开NERDTREE   
+     normal模式下`shift-w` 打开或者关闭  
+  0.  vim 窗体最大化  
+      normal模式下`ctrl+w+o` 最大化，再执行一次可还原  
+  0. 跳转之后回到原处  
+     normal模式下`ctrl-o`(返回) `ctrl-i`(前进)  
+  0. 文件内容搜索  （linux)
+    在normal模式下，命令：`Ack foo` 即会搜索当前目录下所有包含foo的行，通过 j,k上下移动,o 可以打开，想要跳转回原来的地方参考上一个快捷键。  
 ## Install neovim  
   see https://github.com/neovim  
   python module for neovim  
@@ -31,15 +48,6 @@ to install developer tools :git expect tmux vim-plugins neovim
   0. For mac  
     see  http://skipperkongen.dk/2011/11/13/installing-virtual-environment-on-mac/  
     see  http://blog.csdn.net/t1gerr/article/details/9956455  
-
-  0. Configure for neovim  
-    copy init.vim to `~/.config/nvim/`  
-    configure in `~/.zshrc`  
-    ```shell  
-    alias vi='nvim -u ~/.config/nvim/init.vim'  
-```
-    copy `./vimconf/.vim` into `~/.config/nvim/`  
-    and then open nvim execute `:PluginInstall`   
 
   0. Other
      You need to editor init.vim to change the path according to you systhem  
@@ -56,8 +64,7 @@ to install developer tools :git expect tmux vim-plugins neovim
      再跳到vi的文件中进行粘贴。
      在terminal和vi 窗口之间切换，可以按ESC,ESC（注意是两次）回到normal模式然后kjhl上
      下左右移动或者是Ctrl-w。
-  0.  vim 窗体最大化
-      ctrl+w+o 最大化，再执行一次可还原   
+
 
 ## Plugin List    
   ```sh
