@@ -365,6 +365,7 @@ set runtimepath^=~/.config/nvim/bundle/ctrlp.vim
 nmap mix :CtrlPMixed<cr>
 nmap buf :CtrlPBuffer<cr>
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:50'
+let g:ctrlp_extensions = ['funky']
 let g:ctrlp_prompt_mappings = {
     \ 'PrtBS()':              ['<bs>', '<c-]>'],
     \ 'PrtDelete()':          ['<del>'],
