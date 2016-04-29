@@ -98,8 +98,18 @@ source "$HOME/virtual_env/neovim/bin/activate"
 export WORKON_HOME="$HOME/virtual_env/"
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
 
-alias vi='/usr/bin/nvim -u ~/.config/nvim/init.vim'
-alias grep='ack-grep --color -iR'
+if [ -e /usr/local/bin/nvim ];then
+    alias vi='/usr/local/bin/nvim -u ~/.config/nvim/init.vim'
+elif [ -e /usr/bin/nvim ];then
+    alias vi='/usr/bin/nvim -u ~/.config/nvim/init.vim'
+fi
+has_ack=`which ack-grep|grep -v not|grep -v grep`
+if [ ! -z "$has_ack" ];then
+    alias grep='ack-grep --color -iR'
+else
+    alias grep='grep --color=auto -iRn'
+fi
+
 alias docker='sudo docker '
 alias sh='bash'
 
