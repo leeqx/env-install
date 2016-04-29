@@ -1,6 +1,4 @@
 " Bundle Vundle configurations-
-let g:python_host_prog = '/home/roop/virtual_env/neovim/bin/python'
-
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
