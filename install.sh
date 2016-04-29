@@ -21,7 +21,7 @@ if [ "$os" == "Linux" ];then
     os="linux"
 fi
 echo -e "$BLUE OS:$os user:$user $DEFAULT"
-BACKUPDIR=/home/$user/backup
+BACKUPDIR=$HOME/backup
 if [ ! -e $BACKUPDIR ];then
 	mkdir -p $BACKUPDIR
 fi
@@ -84,9 +84,9 @@ function install_zsh()
         if [ $? -eq 0 ];then
             chown $user:$user oh-my-zsh -R
             cd oh-my-zsh
-            mkdir -p /home/$user/.oh-my-zsh/themes
-            cp * /home/$user/.oh-my-zsh -R
-            chown $user:$user /home/$user/.oh-my-zsh/ -R
+            mkdir -p $HOME/.oh-my-zsh/themes
+            cp * $HOME/.oh-my-zsh -R
+            chown $user:$user $HOME/.oh-my-zsh/ -R
             cd -
             break;
         else
@@ -97,9 +97,9 @@ function install_zsh()
     done
     cd $project
     echo -e "$BLUE setup zsh config $DEFAULT"
-    copy /home/$user/.zshrc $BACKUPDIR 
-    copy $project/.zshrc /home/$user
-    copy $project/oh-my-zsh.sh /home/$user/.oh-my-zsh
+    copy $HOME/.zshrc $BACKUPDIR 
+    copy $project/.zshrc $HOME
+    copy $project/oh-my-zsh.sh $HOME/.oh-my-zsh
 
     echo -e "$BLUE setup zsh as default sh $DEFAULT"
     zshfile=`which zsh`
@@ -109,35 +109,36 @@ function install_zsh()
     mkdir -p /home/$suer/.vim/bundle/tmux-powerline/
     chown $user /home/$suer/.vim/bundle/tmux-powerline/
     copy $project/powerline*.zsh /home/$suer/.vim/bundle/tmux-powerline/
-    copy $project/.ycm_extra_conf.py /home/$user/
-    chown $user /home/$user/.oh-my-zsh/themes
-    copy $project/agnoster-new.zsh-theme /home/$user/.oh-my-zsh/themes/agnoster-new.zsh-theme
-    copy $project/powerline_tmux_1.8.conf /home/$user/
+    copy $project/.ycm_extra_conf.py $HOME/
+    chown $user $HOME/.oh-my-zsh/themes
+    copy $project/agnoster-new.zsh-theme $HOME/.oh-my-zsh/themes/agnoster-new.zsh-theme
+    copy $project/powerline_tmux_1.8.conf $HOME/
 }
 function config_vim()
 {
     echo -e "$BLUE setup .vim .vimrc $DEFAULT"
     if [ -e $project/vimconf ];then
-        echo -e "$BLUE cp /home/$user/.vimrc $BACKUPDIR/.vimrc.bak.$$ $DEFAULT"
-        copy /home/$user/.vimrc $BACKUPDIR/.vimrc.bak.$$
-        copy /home/$user/.vim $BACKUPDIR/.vim.bak.$$
+        echo -e "$BLUE cp $HOME/.vimrc $BACKUPDIR/.vimrc.bak.$$ $DEFAULT"
+        copy $HOME/.vimrc $BACKUPDIR/.vimrc.bak.$$
+        copy $HOME/.vim $BACKUPDIR/.vim.bak.$$
 
-        echo -e "$BLUE cp -Rf vimconf/* /home/$user $DEFAULT"
-        copy $project/vimconf/.vimrc /home/$user
-        cp -R $project/vimconf/.vim /home/$user
-        chown $user:$user -R /home/$user/.vim 
+        echo -e "$BLUE cp -Rf vimconf/* $HOME $DEFAULT"
+        copy $project/vimconf/.vimrc $HOME
+        cp -R $project/vimconf/.vim $HOME
+        chown $user:$user -R $HOME/.vim 
     fi
 
     echo -e "$BLUE configure for nvim $DEFAULT"
-    if [ ! -e /home/$user/.config/nvim ];then
-        mkdir -p  /home/$user/.config/nvim
+    if [ ! -e $HOME/.config/nvim ];then
+        mkdir -p  $HOME/.config/nvim
     fi
-    copy $project/init.vim /home/$user/.config/nvim/
-    echo "source $project/vimcommon.vim" >> /home/$user/.config/nvim/init.vim
+    copy $project/init.vim $HOME/.config/nvim/
+    echo "source $project/vimcommon.vim" >> $HOME/.config/nvim/init.vim
+    echo "let g:python_host_prog='$HOME/virtual_env/neovim/bin/python'" >> $HOME/.config/nvim/init.vim
     if [ -e $project/vimconf ];then
-        cp -Rf $project/vimconf/.vim/* /home/$user/.config/nvim/
+        cp -Rf $project/vimconf/.vim/* $HOME/.config/nvim/
     fi
-    chown $user:$user /home/$user/.config/nvim -R
+    chown $user:$user $HOME/.config/nvim -R
 }
 function install_font()
 {
@@ -149,10 +150,10 @@ function install_font()
 function config_tmux()
 {
     echo -e "$BLUE ######setup configure .tmux.conf####### $DEFAULT"
-    copy /home/$user/.tmux.conf $BACKUPDIR/.tmux.conf.bak.$$
+    copy $HOME/.tmux.conf $BACKUPDIR/.tmux.conf.bak.$$
 
-    copy $project/.tmux.conf  /home/$user
-    chown $user:$user /home/$user/.tmux.conf
+    copy $project/.tmux.conf  $HOME
+    chown $user:$user $HOME/.tmux.conf
 }
 function copy()
 {
@@ -193,12 +194,12 @@ function install_virtualenv()
     pip install virtualenv
     if [ $? -eq 0 ];then
         echo -e "$GREEN install virtualenv OK $DEFAULT"
-        if [ ! -e /home/$user/virtual_env/ ];then
-            mkdir -p /home/$user/virtual_env/
+        if [ ! -e $HOME/virtual_env/ ];then
+            mkdir -p $HOME/virtual_env/
         fi
-        cd /home/$user/virtual_env
+        cd $HOME/virtual_env
         virtualenv neovim
-        chown -R $user:$user /home/$user/virtual_env
+        chown -R $user:$user $HOME/virtual_env
     else
         echo -e "$GREEN install virtualenv FAILED $DEFAULT"
     fi
@@ -229,7 +230,7 @@ elif [ "$os"=="Darwin" ];then
 	git=`which git`
 	if [ -z "$git" ];then
 		brew install git
-		if [ ! -e /home/$user/.ssh/id_rsa.pub ];then
+		if [ ! -e $HOME/.ssh/id_rsa.pub ];then
 		 echo "****you need to run :ssh-keygen -t rsa -C \"your email\" "
 		 exit
 		fi
@@ -261,11 +262,11 @@ install_zsh
 install_font
 config_tmux
 config_vim
-chown -R $user:$user /home/$user
+chown -R $user:$user $HOME
 
 echo -e "$BLUE You need to run :ssh-keygen -t rsa -C \"youremail\" $DEFAULT"
 echo -e "$BLUE Please open vim and run :PluginInstall or :PluginUpdate to install vim-plugins"
-echo " cd /home/$user/.vim/bundle/YouCompleteMe/"
+echo " cd $HOME/.vim/bundle/YouCompleteMe/"
 echo " sudo ./install.sh --clang-completer --system-libclang"
 echo " If dhe git color is not correct you maybe to modify ~/.oh-my-zsh/lib/git.zsh:parse_git_dirty ,because ZSH_THEME_GIT_PROMPT_CLEAN is not empty and ZSH_THEME_GIT_PROMPT_CLEAN=%{^[[34m%}) which will cause the agnoster-new.zsh-theme check as dirty"
 echo " Finally,open terminal and edit configure to change font use powerline type $DEFAULT"
