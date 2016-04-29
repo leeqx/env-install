@@ -1,4 +1,17 @@
 # env-install
+## 安装说明
+   0. clone project
+   0. cd env-install
+   0. sudo bash ./install.sh 0     --不会更新linux 软件源
+   0. sudo bash ./install.sh 1     --会更新linux 软件源
+   0. 打开vi 输入以下命令安装vim相关插件     --会更新linux 软件源
+   0. 进入到~/.vim/bundle/YouCompleteMe,然后执行命令：install.py --clang-completer --gocode-completer 编译YCM
+   0. 如果想要使用solarised 终端配色,进入到如下目录：
+	  cd env-install/gnome-terminal-colors-solarized
+	  bash set_dark.sh
+   0. 更改终端字体看需要选择一种带有powerline的字体即可
+   0. reboot 系统
+
 to install developer tools :git expect tmux vim-plugins neovim
 
 ## tmux 快捷键
