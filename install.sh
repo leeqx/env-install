@@ -225,6 +225,11 @@ if [ "$os"=="linux" ];then
     install_package jq #json util
     intial_package tree #ls diretory as tree
 elif [ "$os"=="Darwin" ];then
+    hasBrew=`which brew|grep -v not|grep -v grep`
+    if [ -z "$hasBrew" ];then
+        echo -e "$RED please install homebrew first on mac os $DEFAULT"
+        exit
+    fi
 	echo "1. install git"
 
 	git=`which git`
