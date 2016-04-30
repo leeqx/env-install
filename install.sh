@@ -189,7 +189,7 @@ function install_virtualenv()
         echo -e "$GREEN install virtualenv FAILED $DEFAULT"
     fi
 }
-if [ "$os"=="linux" ];then
+if [ "$os" == "linux" ];then
     install_package git
     install_package expect
     install_package tmux
@@ -208,7 +208,7 @@ if [ "$os"=="linux" ];then
     install_package curl
     install_package jq #json util
     intial_package tree #ls diretory as tree
-elif [ "$os"=="Darwin" ];then
+elif [ "$os" == "Darwin" ];then
     hasBrew=`which brew|grep -v not|grep -v grep`
     if [ -z "$hasBrew" ];then
         echo -e "$RED please install homebrew first on mac os $DEFAULT"

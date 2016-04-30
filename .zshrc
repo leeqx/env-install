@@ -90,10 +90,10 @@ oi
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
 function runTmux () {
     os=`uname`
-    if [ "$os"="Linux" ];then
+    if [ "$os" = "Linux" ];then
         tmuxHasRun=`ps -C tmux|grep -v CMD|grep -v defunct|grep -v grep`
-    else
-        tmuxHasRun=`ps tmux|grep -v CMD|grep -v defunct|grep -v grep`
+    elif [ "$os" = "Darwin" ];then
+        tmuxHasRun=`ps C tmux|grep -v CMD|grep -v defunct|grep -v grep`
     fi
     if [ -z "$tmuxHasRun" ];then
         echo -e "\033[32;1m tmux not run,now running new \033[0m"
