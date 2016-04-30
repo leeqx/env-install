@@ -227,7 +227,7 @@ elif [ "$os" == "Darwin" ];then
 
 	exp=`which expect`
 	if [ -z "$expect" ];then
-		brew install expect
+		brew install homebrew/dupes/expect
 	fi
 	echo "3.install tmux"
 	tm=`which tmux`
