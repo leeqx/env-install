@@ -153,8 +153,6 @@ function config_tmux()
     copy $HOME/.tmux.conf $BACKUPDIR/.tmux.conf.bak.$$
 
     copy $project/.tmux.conf  $HOME/
-    echo "set-option -g status-left \"#($HOME/.vim/bundle/powerline/powerline/bindings/bash/powerline.sh left)\"" >> $HOME/.tmux.conf
-    echo "lset-option -g status-right \"#($HOME/.vim/bundle/powerline/powerline/bindings/bash/powerline.sh right)\"" >> $HOME/.tmux.conf
     chown $user:$user $HOME/.tmux.conf
 }
 function copy()
