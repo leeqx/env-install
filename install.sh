@@ -152,7 +152,9 @@ function config_tmux()
     echo -e "$BLUE ######setup configure .tmux.conf####### $DEFAULT"
     copy $HOME/.tmux.conf $BACKUPDIR/.tmux.conf.bak.$$
 
-    copy $project/.tmux.conf  $HOME
+    copy $project/.tmux.conf  $HOME/
+    echo "set-option -g status-left \"#($HOME/.vim/bundle/powerline/powerline/bindings/bash/powerline.sh left)\"" >> $HOME/.tmux.conf
+    echo "lset-option -g status-right \"#($HOME/.vim/bundle/powerline/powerline/bindings/bash/powerline.sh right)\"" >> $HOME/.tmux.conf
     chown $user:$user $HOME/.tmux.conf
 }
 function copy()
@@ -172,22 +174,7 @@ function copy()
         echo -e "$RED error: $src no exist $DEFAULT"
     fi
 }
-function install_sougo()
-{
-    echo -e "$BLUE install sougo input $DEFAULT"
-    cd /tmp
-    if [ -e sougoupingyin_$$.deb ];then
-        rm -f sougoupingyin_2.0.0.0072_amd64.deb
-    fi
-    wget "http://cdn2.ime.sogou.com/dl/index/1461207453/sogoupinyin_2.0.0.0072_amd64.deb?st=wc3STOG_z9s6NKSPHa4aDA&e=1461635410&fn=sogoupinyin_2.0.0.0072_amd64.deb" -O souginput_$$.deb
-    dpkg -i sougoupingyin_$$.deb
-    if [ $? -eq 0 ];then
-        echo -e "$GREEN install sougou input ok $DEFAULT"
-    else
-        echo -e "$RED install sougou input failed $DEFAULT"
-    fi
-    cd  $project
-}
+
 function install_virtualenv()
 {
     echo -e "$BLUE install virtualenv for neovim $DEFAULT"
@@ -218,7 +205,6 @@ if [ "$os"=="linux" ];then
 
     install_package ack-grep 
 	install_package g++
-    install_sougo
     install_package lua5.2
     install_package golang
     install_package curl
