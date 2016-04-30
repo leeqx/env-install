@@ -77,8 +77,8 @@ export LANG=en_US.UTF-8
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
-alias ls='ls -lh --color=auto'
-alias ll='ls -lh --color=auto'
+alias ls='ls -lh '
+alias ll='ls -lh '
 alias tm='tmux -2 -f ~/.tmux.conf'
 alias tml='tmux -l'
 alias oi='set -o vi'
@@ -89,7 +89,12 @@ oi
 
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
 function runTmux () {
-    tmuxHasRun=`ps -C tmux|grep -v CMD|grep -v defunct|grep -v grep`
+    os=`uname`
+    if [ "$os"="Linux" ];then
+        tmuxHasRun=`ps -C tmux|grep -v CMD|grep -v defunct|grep -v grep`
+    else
+        tmuxHasRun=`ps tmux|grep -v CMD|grep -v defunct|grep -v grep`
+    fi
     if [ -z "$tmuxHasRun" ];then
         echo -e "\033[32;1m tmux not run,now running new \033[0m"
         tm 
