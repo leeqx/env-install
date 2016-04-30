@@ -5,3 +5,5 @@
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.config/nvim/bundle/Vundle.vim
 " maybe you need add manual: source vimcommon.conf
+"
+" And vim plugin will intall at ~/.vim/bundle/
