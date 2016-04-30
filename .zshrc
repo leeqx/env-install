@@ -105,9 +105,9 @@ elif [ -e /usr/bin/nvim ];then
 fi
 has_ack=`which ack-grep|grep -v not|grep -v grep`
 if [ ! -z "$has_ack" ];then
-    alias grep='ack-grep --color -iR'
+    alias grep='ack-grep --color -in'
 else
-    alias grep='grep --color=auto -iRn'
+    alias grep='grep --color=auto -in'
 fi
 
 alias docker='sudo docker '
