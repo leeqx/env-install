@@ -58,18 +58,10 @@ export PATH="$HOME/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
-#source ~/.vim/bundle/tmux-powerline/powerline.zsh 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
- if [[ -n $SSH_CONNECTION ]]; then
-   export EDITOR='nvim'
-   bindkey -v 
- else
-   export EDITOR='nvim'
- fi
-
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
@@ -85,34 +77,53 @@ export LANG=en_US.UTF-8
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
-alias ls='ls -lh --color'
-alias ll='ls -lh --color'
+alias ls='ls -lh --color=auto'
+alias ll='ls -lh --color=auto'
 alias tm='tmux -2 -f ~/.tmux.conf'
 alias tml='tmux -l'
 alias oi='set -o vi'
-oi
-tm 
 alias sh='/usr/bin/zsh'
-
-source "$HOME/virtual_env/neovim/bin/activate"
-export WORKON_HOME="$HOME/virtual_env/"
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
-
-if [ -e /usr/local/bin/nvim ];then
-    alias vi='/usr/local/bin/nvim -u ~/.config/nvim/init.vim'
-elif [ -e /usr/bin/nvim ];then
-    alias vi='/usr/bin/nvim -u ~/.config/nvim/init.vim'
-fi
-has_ack=`which ack-grep|grep -v not|grep -v grep`
-if [ ! -z "$has_ack" ];then
-    alias grep='ack-grep --color -in'
-else
-    alias grep='grep --color=auto -in'
-fi
-
 alias docker='sudo docker '
 alias sh='bash'
+oi
 
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
+function runTmux () {
+    tmuxHasRun=`ps -C tmux|grep -v CMD|grep -v defunct|grep -v grep`
+    if [ -z "$tmuxHasRun" ];then
+        echo -e "\033[32;1m tmux not run,now running new \033[0m"
+        tm 
+    else
+        echo -e "\033[32;1m tmux already run,now attatch\033[0m"
+        tmux attach
+    fi
+}
+runTmux
+function configNvim() {
+    if [ -e /usr/local/bin/nvim ];then
+        alias vi='/usr/local/bin/nvim -u ~/.config/nvim/init.vim'
+    elif [ -e /usr/bin/nvim ];then
+        alias vi='/usr/bin/nvim -u ~/.config/nvim/init.vim'
+    fi
+    if [ -e $HOME/virtual_env/neovim/bin/activate ];then
+        source "$HOME/virtual_env/neovim/bin/activate"
+        export WORKON_HOME="$HOME/virtual_env/"
+    fi
+    if [[ -n $SSH_CONNECTION ]]; then
+        export EDITOR='vi'
+        bindkey -v 
+    else
+        export EDITOR='vi'
+    fi
+}
+function configGrep () {
+    has_ack=`which ack-grep|grep -v not|grep -v grep`
+    if [ ! -z "$has_ack" ];then
+        alias grep='ack-grep --color -in'
+    else
+        alias grep='grep --color=auto -in'
+    fi
+}
 # use ctrl-z instead of fg 
 fancy-ctrl-z () {
   if [[ $#BUFFER -eq 0 ]]; then
@@ -125,3 +136,6 @@ fancy-ctrl-z () {
 }
 zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
+configNvim
+configGrep
+
