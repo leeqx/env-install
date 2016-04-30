@@ -9,17 +9,16 @@ if [ $# -lt 1 ];then
 fi
 update_source=$1
 
-issupper=`id|grep root`
-if [ -z "$issupper" ];then
-	echo -e "$RED ****must run with root $DEFAULT"
-	exit
-fi
-
-user=`echo $HOME|awk -F'\/' '{print $3}'`
 os=`uname`
+issupper=`id|grep root`
 if [ "$os" == "Linux" ];then
     os="linux"
+    if [ -z "$issupper" ];then
+        echo -e "$RED ****linux os must run with root $DEFAULT"
+        exit
+    fi
 fi
+user=`echo $HOME|awk -F'\/' '{print $3}'`
 echo -e "$BLUE OS:$os user:$user $DEFAULT"
 BACKUPDIR=$HOME/backup
 if [ ! -e $BACKUPDIR ];then
@@ -70,7 +69,6 @@ function install_neovim()
 
 function install_zsh()
 {
-    install_package zsh
     cd /tmp
     count=5
     while [[ $count -gt 0 ]];do
@@ -201,6 +199,7 @@ if [ "$os" == "linux" ];then
     install_virtualenv
     install_neovim
 
+    install_package zsh
     install_package ack-grep 
 	install_package g++
     install_package lua5.2
@@ -235,9 +234,10 @@ elif [ "$os" == "Darwin" ];then
 	if [ -z "$tm" ];then
 		brew install tmux
 	fi
-
+    
 	 brew update
 	 brew install vim
+     brew install zsh
 	 #for YouCompleteMe compile
 	 brew install cmake
 	 brew install https://raw.github.com/Homebrew/homebrew-dupes/master/grep.rb
