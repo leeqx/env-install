@@ -21,25 +21,25 @@
 to install developer tools :git expect tmux vim-plugins neovim
 
 ## tmux 快捷键
-  0. 启动tmux
-     tm ＃前提是设置了`alias tm='tmux -2'`
+  0. 启动tmux  
+     tm ＃前提是设置了`alias tm='tmux -2'`  
 
-  0. 新建session
-     `Ctrl+t+c `
+  0. 新建session  
+     `Ctrl+t+c `  
 
-  0. session跳转
+  0. session跳转  
      `Ctrl＋t＋n`(数字)　跳转到第几个session  
-  0. 分屏session
-     `Ctrl+t+-` 水平分屏
-     `Ctrl+t+| `垂直分屏
-     分屏之间跳转`Ctrl+t+o`
-  0. 滚屏
-     `Ctrl＋t＋［`
-     然后可以使用vim快捷店 `h、j、k、l`上下左右移动
-     在滚屏模式下，v 进入选择模式采用以上键移动，然后y复制退出滚屏模式；
-     `Ctrl＋t＋］`粘贴刚复制的内容
-  0. 最大化  
-     `Ctrl + t + z `可以使的当前分窗口最大化，再输入一次则可以恢复  
+  0. 分屏session  
+     `Ctrl+t+-` 水平分屏  
+     `Ctrl+t+| `垂直分屏  
+     分屏之间跳转`Ctrl+t+o`  
+  0. 滚屏  
+     `Ctrl＋t＋［`  
+     然后可以使用vim快捷店 `h、j、k、l`上下左右移动  
+     在滚屏模式下，v 进入选择模式采用以上键移动，然后y复制退出滚屏模式  　
+     `Ctrl＋t＋］`粘贴刚复制的内容  
+  0. 最大化   
+     `Ctrl + t + z `可以使的当前分窗口最大化，再输入一次则可以恢复  　　 
 
 ## vim 快捷键  
   0. 搜索文件  
