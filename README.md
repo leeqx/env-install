@@ -1,11 +1,17 @@
 # env-install
+> linux 终端开发环境安装：zsh expect tmux vim neovim gcc等  
+> 下面图片是：ZSH_THEME="agnoster"、solarise配色、vim、tmux共同效果图　
+![zsh] (https://raw.githubusercontent.com/leeqx/env-install/master/zsh_tmux.png)
+![vim] (https://raw.githubusercontent.com/leeqx/env-install/master/vim02.png)
+![vim-tmux] (https://raw.githubusercontent.com/leeqx/env-install/master/vim-tmux.png)
+
 ## 安装说明
    0. clone project
    0. cd env-install
    0. sudo bash ./install.sh 0     --不会更新linux 软件源
    0. sudo bash ./install.sh 1     --会更新linux 软件源
-   0. 打开vi 输入以下命令安装vim相关插件     --会更新linux 软件源
-   0. 进入到~/.vim/bundle/YouCompleteMe,然后执行命令：install.py --clang-completer --gocode-completer 编译YCM
+   0. 打开vi 输入以下命令安装vim相关插件     
+   0. 进入到~/.vim/bundle/YouCompleteMe,然后执行命令：install.py --clang-completer --gocoder-completer 编译YCM
    0. 如果想要使用solarised 终端配色,进入到如下目录：
 	  cd env-install/gnome-terminal-colors-solarized
 	  bash set_dark.sh
@@ -15,25 +21,25 @@
 to install developer tools :git expect tmux vim-plugins neovim
 
 ## tmux 快捷键
-  0. 启动tmux 需要在
-     tm ＃前提是设置了alias tm='tmux -2'
+  0. 启动tmux
+     tm ＃前提是设置了`alias tm='tmux -2'`
 
   0. 新建session
-     Ctrl+t+c 
+     `Ctrl+t+c `
 
   0. session跳转
-     Ctrl＋t＋n  
+     `Ctrl＋t＋n`(数字)　跳转到第几个session  
   0. 分屏session
-     Ctrl+t+- 水平分屏
-     Ctrl+t+| 垂直分屏
-     分屏之间跳转Ctrl+t+o
+     `Ctrl+t+-` 水平分屏
+     `Ctrl+t+| `垂直分屏
+     分屏之间跳转`Ctrl+t+o`
   0. 滚屏
-     Ctrl＋t＋［
-     然后可以使用vim快捷店 h、j、k、l上下左右移动
+     `Ctrl＋t＋［`
+     然后可以使用vim快捷店 `h、j、k、l`上下左右移动
      在滚屏模式下，v 进入选择模式采用以上键移动，然后y复制退出滚屏模式；
-     Ctrl＋t＋］粘贴刚复制的内容
+     `Ctrl＋t＋］`粘贴刚复制的内容
   0. 最大化  
-     Ctrl + t + z 可以使的当前分窗口最大化，再输入一次则可以恢复  
+     `Ctrl + t + z `可以使的当前分窗口最大化，再输入一次则可以恢复  
 
 ## vim 快捷键  
   0. 搜索文件  
