@@ -40,8 +40,10 @@ to install developer tools :git expect tmux vim-plugins neovim
      `Ctrl＋t＋］`粘贴刚复制的内容  
   0. 最大化   
      `Ctrl + t + z `可以使的当前分窗口最大化，再输入一次则可以恢复  　　 
+  0. session rename
+     `Ctrl + t +,
 
-## vim 快捷键  
+## vim 快捷键   
   0. 搜索文件  
      0. 在normal 模式，使用快捷键：`ctrl-p`。打开ctrlp之后可以通过`ctrl-b`快捷键在文件名搜索、buffer搜索、函数名搜索（当前打开文件)（这几种模式都是通过方向键上下移动）
      0. 在文件名搜索模式下可以：`ctrl-y`在当前目录下创建文件；  
@@ -83,8 +85,25 @@ to install developer tools :git expect tmux vim-plugins neovim
      再跳到vi的文件中进行粘贴。
      在terminal和vi 窗口之间切换，可以按ESC,ESC（注意是两次）回到normal模式然后kjhl上
      下左右移动或者是Ctrl-w。
-
-
+     
+### vim install  
+  [vim install](https://realpython.com/blog/python/vim-and-python-a-match-made-in-heaven/)  
+  compile VIM from source to support YCM：  
+  git clone https://github.com/vim/vim.git  
+   想从源码编译支持YCM那么需要：
+   ```shell
+ sudo apt-get install libncurses5-dev
+ ./configure --with-features=huge \
+            --enable-multibyte \
+            --enable-rubyinterp=yes \
+            --enable-pythoninterp=yes \
+            --with-python-config-dir=/usr/lib/python2.7/config \
+            --enable-python3interp=yes \
+            --with-python3-config-dir=/usr/lib/python3.5/config \
+            --enable-perlinterp=yes \
+            --enable-luainterp=yes
+  sudo make install
+  ```
 ## Plugin List    
   ```sh
 Plugin 'VundleVim/Vundle.vim'
@@ -161,5 +180,3 @@ Plugin 'ervandew/supertab'
 
   0. vim && iterm theme  
      https://github.com/altercation/solarized/  
-### vim install
- [vim install] (https://realpython.com/blog/python/vim-and-python-a-match-made-in-heaven/)
