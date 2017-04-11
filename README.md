@@ -161,3 +161,5 @@ Plugin 'ervandew/supertab'
 
   0. vim && iterm theme  
      https://github.com/altercation/solarized/  
+### vim install
+ [vim install] (https://realpython.com/blog/python/vim-and-python-a-match-made-in-heaven/)
