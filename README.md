@@ -5,6 +5,24 @@
    0. sudo bash ./install.sh 0     --不会更新linux 软件源
    0. sudo bash ./install.sh 1     --会更新linux 软件源
    0. 打开vi 输入以下命令安装vim相关插件     --会更新linux 软件源
+      :PluginInstall
+   0. 如果使用的nvim那么需求修改~/.config/nvim/init.xml根据自己的路径进行调整;
+   ```vim
+    " set the runtime path to include Vundle and initialize
+    set rtp+=~/.config/nvim/bundle/Vundle.vim
+     下面这两行换成自己对应的路径
+    source /Users/nano/project/env-install/vimcommon.vim
+    let g:python_host_prog='/Users/nano/virtual_env/neovim/bin/python'
+    ```
+    如果是vim 则需要改~/.vimrc在配置中加上如下几行即可  
+    ```vim 
+    " set the runtime path to include Vundle and initialize
+    set rtp+=~/.vim/bundle/Vundle.vim
+    " maybe you need add manual: source vimcommon.conf
+    "
+    " And vim plugin will intall at ~/.vim/bundle/
+    source /Users/nano/project/env-install/vimcommon.vim
+    ```
    0. 进入到~/.vim/bundle/YouCompleteMe,然后执行命令：install.py --clang-completer --gocode-completer 编译YCM
    0. 如果想要使用solarised 终端配色,进入到如下目录：
 	  cd env-install/gnome-terminal-colors-solarized
@@ -50,12 +68,31 @@ to install developer tools :git expect tmux vim-plugins neovim
      normal模式下`ctrl-o`(返回) `ctrl-i`(前进)  
   0. 文件内容搜索  （linux)
     在normal模式下，命令：`Ack foo` 即会搜索当前目录下所有包含foo的行，通过 j,k上下移动,o 可以打开，想要跳转回原来的地方参考上一个快捷键。  
+    需要额外安装ack-grep,在ubuntu/debain/linux-mint:
+    `sudo apt-get install ack-grep`
+    在macos
+    `brew install ack`
+  0. YCM 插件配置文件自动生成
+    > YCM-GENERATOR usage
+    > Run ./config_gen.py PROJECT_DIRECTORY, where PROJECT_DIRECTORY is the root directory of your project's build system (i.e. the one containing the root Makefile, etc.)
+    > You can also invoke it from within Vim using the :YcmGenerateConfig or :CCGenerateConfig commands to generate a config file for the current directory.
+    > These commands accept the same arguments as ./config_gen.py, but do not require the project directory to be specified (it defaults to the current working direc
+    > or run ~/.config/nvim/bundle/YCM-Generator/config_gen.py(neovim) PROJECT_DIRECTORY to create YCM-config file
+    > or run ~/.vim/bundle/YCM-Generator/config_gen.py(vim) PROJECT_DIRECTORY to create YCM-config file
+  0. tabular 插件
+    :Tab / = 
+    表示代码按照=号进行对齐
+    :10,5 Tab / =
+    表示第10行到第10+5行代码按照=号进行对齐
+
 ## Install neovim  
   see https://github.com/neovim  
   python module for neovim  
   https://neovim.io/doc/user/nvim_python.html  
 
   0. For linux  
+    sudo apt-get install python-virtualenv
+    mkvirtualenv neovim
     see https://github.com/neovim/neovim/issues/3396  
 
   0. For mac  
@@ -85,12 +122,12 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'Yggdroot/indentLine'
 Plugin 'fatih/vim-go'
 Plugin 'tpope/vim-fugitive'
-Plugin 'oblitum/YouCompleteMe' , { 'do': './install.py --clang-completer' }
 Plugin 'scrooloose/syntastic'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'bling/vim-airline'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'oblitum/YouCompleteMe' , { 'do': './install.py --clang-completer' }
 Plugin 'morhetz/gruvbox'
 Plugin 'tpope/vim-markdown'
 Plugin 'kopischke/unite-spell-suggest'
@@ -109,8 +146,7 @@ Plugin 'vim-scripts/a.vim'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'bbchung/clighter'
-Plugin 'ludovicchabant/vim-gutentags'
+"Plugin 'bbchung/clighter'
 Plugin 'troydm/zoomwintab.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'airblade/vim-gitgutter'
@@ -118,6 +154,14 @@ Plugin 'jacobsimpson/nvim-terminal-velocity'
 Plugin 'tacahiroy/ctrlp-funky'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'ervandew/supertab'
+Plugin 'xolox/vim-lua-ftplugin'
+Plugin 'xolox/vim-misc'
+Plugin 'vim-scripts/bash-support.vim'
+Plugin 'mileszs/ack.vim'
+Plugin 'vim-scripts/indent-motion'
+Plugin 'google/vim-ft-go'
+Plugin 'dongweiming/vary.vim' " 保存是自动去掉行尾空格，tab转空格
+Plugin 'rdnetto/YCM-Generator', { 'branch': 'stable'} "ＹＣＭ　配置文件生成工具"
 ```
 ### QA
   0. YCM support libs too old, PLEASE RECOMPILE？

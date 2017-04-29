@@ -18,7 +18,8 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'bling/vim-airline'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'oblitum/YouCompleteMe' , { 'do': './install.py --clang-completer' }
+"Plugin 'oblitum/YouCompleteMe' , { 'do': './install.py --clang-completer' }
+Plugin 'Valloric/YouCompleteMe' , { 'do': './install.py --clang-completer' }
 Plugin 'morhetz/gruvbox'
 Plugin 'tpope/vim-markdown'
 Plugin 'kopischke/unite-spell-suggest'
@@ -57,6 +58,7 @@ Plugin 'vim-scripts/indent-motion'
 Plugin 'google/vim-ft-go'
 Plugin 'dongweiming/vary.vim' " 保存是自动去掉行尾空格，tab转空格
 Plugin 'rdnetto/YCM-Generator', { 'branch': 'stable'} "ＹＣＭ　配置文件生成工具"
+Plugin 'Valloric/ListToggle'
 
 
 
@@ -167,7 +169,7 @@ let g:ycm_confirm_extra_conf = 0
 let g:ycm_auto_trigger = 1
 let g:ycm_key_detailed_diagnostics = '<leader>d'
 let g:ycm_filepath_completion_use_working_dir = 1
- let g:ycm_use_ultisnips_completer = 1
+let g:ycm_use_ultisnips_completer = 1
 let g:ycm_server_log_level = 'error'
 let g:ycm_semantic_triggers =  {
     \   'c' : ['->', '.'],
@@ -187,6 +189,7 @@ nnoremap <leader>jd :YcmCompleter GoTo<CR> " 跳转到定义处
 nnoremap <leader>jc :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>je :YcmCompleter GoToDefinition<CR>
 nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
+nnoremap <leader>yc :YcmGenerateConfig <CR> " 为当前目录生成YCM配置文件
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 
 "=====[oblitum/rainbow]=======================================================
@@ -244,10 +247,10 @@ let g:rehash256 = 1
 set t_Co=256
 syntax enable
 set background=dark
-"colorscheme solarized
-"let g:solarized_italic=1
-"let g:solarized_underline=1
-"let g:solarized_bold=2
+colorscheme solarized
+let g:solarized_italic=1
+let g:solarized_underline=1
+let g:solarized_bold=2
 
 "colorscheme wombat256
 "colorscheme jellybeans
@@ -257,7 +260,7 @@ set background=dark
 "colorscheme C64
 "colorscheme greenvision
 "colorscheme herokudoc
-colorscheme holokai
+"colorscheme holokai
 "colorscheme hornet
 "colorscheme iceberg
 "colorscheme lucius
@@ -339,14 +342,15 @@ let g:gitgutter_highlight_lines=1
 
 "========================nvim-terminal-emulator================================
 " exit term (ESC) and then ctrl-w+w  to switch term and editor
-"""":tnoremap <A-h> <C-\><C-n><C-w>h
-"""":tnoremap <A-j> <C-\><C-n><C-w>j
-"""":tnoremap <A-k> <C-\><C-n><C-w>k
-"""":tnoremap <A-l> <C-\><C-n><C-w>l
-"""":nnoremap <A-h> <C-w>h
-"""":nnoremap <A-j> <C-w>j
-"""":nnoremap <A-k> <C-w>k
-"""":nnoremap <A-l> <C-w>l
+:tnoremap <Esc> <C-\><C-n>
+:tnoremap <A-h> <C-\><C-n><C-w>h
+:tnoremap <A-j> <C-\><C-n><C-w>j
+:tnoremap <A-k> <C-\><C-n><C-w>k
+:tnoremap <A-l> <C-\><C-n><C-w>l
+:nnoremap <A-h> <C-w>h
+:nnoremap <A-j> <C-w>j
+:nnoremap <A-k> <C-w>k
+:nnoremap <A-l> <C-w>l
 
 
 "===============[ctrlp_funky]=================================================
@@ -416,9 +420,14 @@ let g:ctrlp_prompt_mappings = {
 "================================[vary]======================================
 let g:auto_striptrail = 'python,ruby,cpp' " Set want to automatically remove trailing spaces language types, the default is 'python'
 let g:auto_striptab = 'python,ruby,cpp' "Set automatically converted into spaces <tab> type of language
+"===============================[YCM-Generator]=============================
 "YCM-GENERATOR usage
 "Run ./config_gen.py PROJECT_DIRECTORY, where PROJECT_DIRECTORY is the root directory of your project's build system (i.e. the one containing the root Makefile, etc.)
 
 "You can also invoke it from within Vim using the :YcmGenerateConfig or :CCGenerateConfig commands to generate a config file for the current directory. 
 "These commands accept the same arguments as ./config_gen.py, but do not require the project directory to be specified (it defaults to the current working directory).
 "
+"==============================[ListToggle]==================================
+let g:lt_location_list_toggle_map = '<leader>t'
+let g:lt_quickfix_list_toggle_map = '<leader>b'
+let g:lt_height = 10
