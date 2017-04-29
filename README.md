@@ -1,43 +1,61 @@
-# env-install
-> linux 终端开发环境安装：zsh expect tmux vim neovim gcc等  
-> 下面图片是：ZSH_THEME="agnoster"、solarise配色、vim、tmux共同效果图　
-![zsh] (https://raw.githubusercontent.com/leeqx/env-install/master/zsh_tmux.png)
-![vim] (https://raw.githubusercontent.com/leeqx/env-install/master/vim02.png)
-![vim-tmux] (https://raw.githubusercontent.com/leeqx/env-install/master/vim-tmux.png)
+- [ ] 介绍
+- [ ] 安装说明
+- [ ] tmux 快捷键
+- [ ] vim 快捷键
+- [ ] YCM 插件配置文件自动生成
+- [ ] Install neovim
+- [ ] Install vim
+- [ ] Plugin List for vim
+- [ ] solarise color
+- [ ] Color theme
+- [ ] vim && iterm theme 
+- - -
 
+# env-install
+> linux 终端开发环境安装：zsh expect tmux vim neovim gcc、poweeline、ack-grep等  
+> 下面图片是：ZSH_THEME="agnoster"、solarise配色、vim、tmux、poerline共同效果图　
+![zsh](https://raw.githubusercontent.com/leeqx/env-install/master/zsh_tmux.png)
+![vim](https://raw.githubusercontent.com/leeqx/env-install/master/vim02.png)
+![vim-tmux](https://raw.githubusercontent.com/leeqx/env-install/master/vim-tmux.png)
+- - -
 ## 安装说明
-   0. clone project
-   0. cd env-install
-   0. sudo bash ./install.sh 0     --不会更新linux 软件源
-   0. sudo bash ./install.sh 1     --会更新linux 软件源
-   0. 打开vi 输入以下命令安装vim相关插件     --会更新linux 软件源
-      :PluginInstall
-   0. 如果使用的nvim那么需求修改~/.config/nvim/init.xml根据自己的路径进行调整;
-   ```vim
+0. clone project
+0. cd env-install
+0. sudo bash ./install.sh 0     --不会更新linux 软件源  
+0. sudo bash ./install.sh 1     --会更新linux 软件源 
+0. 打开vi 输入以下命令安装vim相关插件     --会更新linux 软件源  
+     :PluginInstall	
+0. 配置 
+  0. 如果使用的nvim那么需求修改~/.config/nvim/init.xml根据自己的路径进行调整;  
+  ```vim  
     " set the runtime path to include Vundle and initialize
     set rtp+=~/.config/nvim/bundle/Vundle.vim
      下面这两行换成自己对应的路径
     source /Users/nano/project/env-install/vimcommon.vim
     let g:python_host_prog='/Users/nano/virtual_env/neovim/bin/python'
-    ```
-    如果是vim 则需要改~/.vimrc在配置中加上如下几行即可  
-    ```vim 
+  ```  
+  
+  0. 如果是vim 则需要改~/.vimrc在配置中加上如下几行即可  
+  ```vim  
     " set the runtime path to include Vundle and initialize
     set rtp+=~/.vim/bundle/Vundle.vim
     " maybe you need add manual: source vimcommon.conf
     "
     " And vim plugin will intall at ~/.vim/bundle/
     source /Users/nano/project/env-install/vimcommon.vim
-    ```
-   0. 进入到~/.vim/bundle/YouCompleteMe,然后执行命令：install.py --clang-completer --gocode-completer 编译YCM
-   0. 如果想要使用solarised 终端配色,进入到如下目录：
-	  cd env-install/gnome-terminal-colors-solarized
-	  bash set_dark.sh
-   0. 更改终端字体看需要选择一种带有powerline的字体即可
-   0. reboot 系统
+  ```  
+  
+0. 进入到~/.vim/bundle/YouCompleteMe,然后执行命令：`install.py --clang-completer --gocode-completer` 编译YCM 
+0. 如果想要使用solarised 终端配色,进入到如下目录：  
+  ```shell
+   cd env-install/gnome-terminal-colors-solarized
+   bash set_dark.sh
+  ```
+0. 更改终端字体看需要选择一种带有powerline的字体即可
+0. reboot 系统
 
 to install developer tools :git expect tmux vim-plugins neovim
-
+- - -
 ## tmux 快捷键
   0. 启动tmux  
      tm ＃前提是设置了`alias tm='tmux -2'`  
@@ -74,24 +92,25 @@ to install developer tools :git expect tmux vim-plugins neovim
       normal模式下`ctrl+w+o` 最大化，再执行一次可还原  
   0. 跳转之后回到原处  
      normal模式下`ctrl-o`(返回) `ctrl-i`(前进)  
+  0. tabular 插件
+    :Tab / = 
+    表示代码按照=号进行对齐
+    :10,5 Tab / =
+    表示第10行到第10+5行代码按照=号进行对齐
   0. 文件内容搜索  （linux)
     在normal模式下，命令：`Ack foo` 即会搜索当前目录下所有包含foo的行，通过 j,k上下移动,o 可以打开，想要跳转回原来的地方参考上一个快捷键。  
     需要额外安装ack-grep,在ubuntu/debain/linux-mint:
     `sudo apt-get install ack-grep`
     在macos
     `brew install ack`
-  0. YCM 插件配置文件自动生成
-    > YCM-GENERATOR usage
+- - - 
+ ## YCM 插件配置文件自动生成
+  > YCM-GENERATOR usage
     > Run ./config_gen.py PROJECT_DIRECTORY, where PROJECT_DIRECTORY is the root directory of your project's build system (i.e. the one containing the root Makefile, etc.)
     > You can also invoke it from within Vim using the :YcmGenerateConfig or :CCGenerateConfig commands to generate a config file for the current directory.
     > These commands accept the same arguments as ./config_gen.py, but do not require the project directory to be specified (it defaults to the current working direc
     > or run ~/.config/nvim/bundle/YCM-Generator/config_gen.py(neovim) PROJECT_DIRECTORY to create YCM-config file
     > or run ~/.vim/bundle/YCM-Generator/config_gen.py(vim) PROJECT_DIRECTORY to create YCM-config file
-  0. tabular 插件
-    :Tab / = 
-    表示代码按照=号进行对齐
-    :10,5 Tab / =
-    表示第10行到第10+5行代码按照=号进行对齐
 
 ## Install neovim  
   see https://github.com/neovim  
@@ -142,7 +161,7 @@ to install developer tools :git expect tmux vim-plugins neovim
   sudo make install
   ```
 ## Plugin List    
-  ```sh
+  ```vim
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'Yggdroot/indentLine'
 Plugin 'fatih/vim-go'
@@ -189,13 +208,13 @@ Plugin 'dongweiming/vary.vim' " 保存是自动去掉行尾空格，tab转空格
 Plugin 'rdnetto/YCM-Generator', { 'branch': 'stable'} "ＹＣＭ　配置文件生成工具"
 ```
 ### QA
-  0. YCM support libs too old, PLEASE RECOMPILE？
+  0. YCM support libs too old, PLEASE RECOMPILE？  
     A：Please remove`~/.config/nvim/bundle/YouCompleteMe/` or `~/.vim/bundle/YouCompleteMe/`  
     then open vim or nvim do `:PluginInstall` to reinstall YCM  
 
 ### solarise color
 
-   ```shell
+```vim
     SOLARIZED HEX     16/8 TERMCOL  XTERM/HEX   L*A*B      RGB         HSB  
     --------- ------- ---- -------  ----------- ---------- ----------- -----------
     base03    #002b36  8/4 brblack  234 #1c1c1c 15 -12 -12   0  43  54 193 100  21
@@ -223,4 +242,4 @@ Plugin 'rdnetto/YCM-Generator', { 'branch': 'stable'} "ＹＣＭ　配置文件�
    [**dircolors solarised color theme**](https://github.com/seebi/dircolors-solarized)   
 
   0. vim && iterm theme  
-     https://github.com/altercation/solarized/  
+     [**solarized-theme**](https://github.com/altercation/solarized/)  
