@@ -1,4 +1,10 @@
 # env-install
+> linux 终端开发环境安装：zsh expect tmux vim neovim gcc等  
+> 下面图片是：ZSH_THEME="agnoster"、solarise配色、vim、tmux共同效果图　
+![zsh] (https://raw.githubusercontent.com/leeqx/env-install/master/zsh_tmux.png)
+![vim] (https://raw.githubusercontent.com/leeqx/env-install/master/vim02.png)
+![vim-tmux] (https://raw.githubusercontent.com/leeqx/env-install/master/vim-tmux.png)
+
 ## 安装说明
    0. clone project
    0. cd env-install
@@ -33,27 +39,29 @@
 to install developer tools :git expect tmux vim-plugins neovim
 
 ## tmux 快捷键
-  0. 启动tmux 需要在
-     tm ＃前提是设置了alias tm='tmux -2'
+  0. 启动tmux  
+     tm ＃前提是设置了`alias tm='tmux -2'`  
 
-  0. 新建session
-     Ctrl+t+c 
+  0. 新建session  
+     `Ctrl+t+c `  
 
-  0. session跳转
-     Ctrl＋t＋n  
-  0. 分屏session
-     Ctrl+t+- 水平分屏
-     Ctrl+t+| 垂直分屏
-     分屏之间跳转Ctrl+t+o
-  0. 滚屏
-     Ctrl＋t＋［
-     然后可以使用vim快捷店 h、j、k、l上下左右移动
-     在滚屏模式下，v 进入选择模式采用以上键移动，然后y复制退出滚屏模式；
-     Ctrl＋t＋］粘贴刚复制的内容
-  0. 最大化  
-     Ctrl + t + z 可以使的当前分窗口最大化，再输入一次则可以恢复  
+  0. session跳转  
+     `Ctrl＋t＋n`(数字)　跳转到第几个session  
+  0. 分屏session  
+     `Ctrl+t+-` 水平分屏  
+     `Ctrl+t+| `垂直分屏  
+     分屏之间跳转`Ctrl+t+o`  
+  0. 滚屏  
+     `Ctrl＋t＋［`  
+     然后可以使用vim快捷店 `h、j、k、l`上下左右移动  
+     在滚屏模式下，v 进入选择模式采用以上键移动，然后y复制退出滚屏模式  　
+     `Ctrl＋t＋］`粘贴刚复制的内容  
+  0. 最大化   
+     `Ctrl + t + z `可以使的当前分窗口最大化，再输入一次则可以恢复  　　 
+  0. session rename
+     `Ctrl + t +,
 
-## vim 快捷键  
+## vim 快捷键   
   0. 搜索文件  
      0. 在normal 模式，使用快捷键：`ctrl-p`。打开ctrlp之后可以通过`ctrl-b`快捷键在文件名搜索、buffer搜索、函数名搜索（当前打开文件)（这几种模式都是通过方向键上下移动）
      0. 在文件名搜索模式下可以：`ctrl-y`在当前目录下创建文件；  
@@ -114,8 +122,25 @@ to install developer tools :git expect tmux vim-plugins neovim
      再跳到vi的文件中进行粘贴。
      在terminal和vi 窗口之间切换，可以按ESC,ESC（注意是两次）回到normal模式然后kjhl上
      下左右移动或者是Ctrl-w。
-
-
+     
+### vim install  
+  [vim install](https://realpython.com/blog/python/vim-and-python-a-match-made-in-heaven/)  
+  compile VIM from source to support YCM：  
+  git clone https://github.com/vim/vim.git  
+   想从源码编译支持YCM那么需要：
+   ```shell
+ sudo apt-get install libncurses5-dev
+ ./configure --with-features=huge \
+            --enable-multibyte \
+            --enable-rubyinterp=yes \
+            --enable-pythoninterp=yes \
+            --with-python-config-dir=/usr/lib/python2.7/config \
+            --enable-python3interp=yes \
+            --with-python3-config-dir=/usr/lib/python3.5/config \
+            --enable-perlinterp=yes \
+            --enable-luainterp=yes
+  sudo make install
+  ```
 ## Plugin List    
   ```sh
 Plugin 'VundleVim/Vundle.vim'
