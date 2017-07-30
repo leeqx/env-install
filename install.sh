@@ -73,10 +73,10 @@ function install_zsh()
     count=5
     while [[ $count -gt 0 ]];do
         if [ ! -e oh-my-zsh ];then
-            git clone git@github.com:robbyrussell/oh-my-zsh.git
+            sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
         else
             cd oh-my-zsh
-            git pull git@github.com:robbyrussell/oh-my-zsh.git
+            sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
             cd -
         fi
         if [ $? -eq 0 ];then
