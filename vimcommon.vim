@@ -19,7 +19,7 @@ Plugin 'honza/vim-snippets'
 Plugin 'bling/vim-airline'
 Plugin 'altercation/vim-colors-solarized'
 "Plugin 'oblitum/YouCompleteMe' , { 'do': './install.py --clang-completer' }
-Plugin 'Valloric/YouCompleteMe' , { 'do': './install.py --clang-completer' }
+Plugin 'Valloric/YouCompleteMe' , { 'do': './install.py --clang-completer --system-libclang' }
 Plugin 'morhetz/gruvbox'
 Plugin 'tpope/vim-markdown'
 Plugin 'kopischke/unite-spell-suggest'
@@ -41,6 +41,12 @@ Plugin 'Xuyuanp/nerdtree-git-plugin'
 "Plugin 'bbchung/clighter'
 Plugin 'troydm/zoomwintab.vim'
 Plugin 'godlygeek/tabular'
+Plugin 'roxma/nvim-completion-manager'
+Plugin 'roxma/ncm-clang'
+Plugin 'roxma/ncm-github'
+Plugin  'Shougo/neco-syntax'
+Plugin 'Shougo/neoinclude.vim'
+Plugin 'ericcurtin/CurtineIncSw.vim'
 
 
 
@@ -431,3 +437,7 @@ let g:auto_striptab = 'python,ruby,cpp' "Set automatically converted into spaces
 let g:lt_location_list_toggle_map = '<leader>t'
 let g:lt_quickfix_list_toggle_map = '<leader>b'
 let g:lt_height = 10
+
+"  map <F5> :call CurtineIncSw()<CR>
+ map <leader>` :call CurtineIncSw()<CR>
+"
