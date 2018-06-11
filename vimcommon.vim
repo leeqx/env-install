@@ -60,11 +60,15 @@ Plugin 'xolox/vim-lua-ftplugin'
 Plugin 'xolox/vim-misc'
 Plugin 'vim-scripts/bash-support.vim'
 Plugin 'mileszs/ack.vim'
+Plugin 'rking/ag.vim'
 Plugin 'vim-scripts/indent-motion'
 Plugin 'google/vim-ft-go'
 Plugin 'dongweiming/vary.vim' " 保存是自动去掉行尾空格，tab转空格
 Plugin 'rdnetto/YCM-Generator', { 'branch': 'stable'} "ＹＣＭ　配置文件生成工具"
 Plugin 'Valloric/ListToggle'
+Plugin 'vim-scripts/taglist.vim'
+Plugin 'majutsushi/tagbar'
+Plugin 'skywind3000/vim-preview'
 
 
 
@@ -440,4 +444,36 @@ let g:lt_height = 10
 
 "  map <F5> :call CurtineIncSw()<CR>
  map <leader>` :call CurtineIncSw()<CR>
-"
+"=============================[taglist]=======================================
+let Tlist_Show_One_File = 1            "不同时显示多个文件的tag，只显示当前文件的
+let Tlist_Exit_OnlyWindow = 1          "如果taglist窗口是最后一个窗口，则退出vim
+let Tlist_Use_Right_Window = 1         "在右侧窗口中显示taglist窗口
+
+"===============================[TagbarToggle]===============================
+nmap <F8> :TagbarToggle<CR>
+
+"=========================[ack]===============================================
+"<Leader>c进行搜索，同时不自动打开第一个匹配的文件"
+map <Leader>c :Ack!<Space> 
+"调用ag进行搜索
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+"高亮搜索关键词
+let g:ackhighlight = 1
+"修改快速预览窗口高度为15
+let g:ack_qhandler = "botright copen 15"
+"在QuickFix窗口使用快捷键以后，自动关闭QuickFix窗口
+let g:ack_autoclose = 1
+"使用ack的空白搜索，即不添加任何参数时对光标下的单词进行搜索，默认值为1，表示开启，置0以后使用空白搜索将返回错误信息
+let g:ack_use_cword_for_empty_search = 1
+"部分功能受限，但对于大项目搜索速度较慢时可以尝试开启
+let g:ack_use_dispatch = 1
+
+
+"==========================[vim-preview]===========================
+noremap <m-u> :PreviewScroll -1<cr>
+noremap <m-d> :PreviewScroll +1<cr>
+inoremap <m-u> <c-\><c-o>:PreviewScroll -1<cr>
+inoremap <m-d> <c-\><c-o>:PreviewScroll +1<cr>
+
